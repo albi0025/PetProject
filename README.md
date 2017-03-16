@@ -18,3 +18,5 @@ Second, we'll review working with React
 - Pass data in as properties to a React component to change how it looks
 - Have some state that can change dynamically
 - Define functions that are passed to subcomponents
+
+## This is my change to the Readme - Tim
