@@ -1,5 +1,6 @@
 
 let request = require('request');
+let cheerio = require('cheerio');
 let scraper = {};
 
 
@@ -26,12 +27,13 @@ scraper.scrapePetango = function(url) {
 
 //This function takes a response which it an HTML string
 //and returns and array of url strings.
-scraper.parseAnimalListResponse = function(response) {
-  console.log(response);
+scraper.parseAnimalListResponse = function(html) {
+  let $ = cheerio.load(html);
+  console.log($('a'))
   return [];
 };
 
-scraper.parseIndividualAnimalResponse = function(response) {
+scraper.parseIndividualAnimalResponse = function(html) {
   return {};
 };
 
