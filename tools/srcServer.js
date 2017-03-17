@@ -3,7 +3,6 @@ import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
-let scrape2 = require('../helpers/scrape2');
 
 /* eslint-disable no-console */
 

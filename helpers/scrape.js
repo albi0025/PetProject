@@ -9,7 +9,7 @@ scraper.scrapePetango = function(url) {
   request(url, function (error, response, body) {
     // console.log('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML
+    // console.log('body:', body); // Print the HTML
   });
   //Parse the response and return and array of Urls to the animals
   let animalUrls = this.parseAnimalListResponse("");
@@ -31,15 +31,12 @@ scraper.parseAnimalListResponse = function(html) {
   let urlStrings = [];
   let $ = cheerio.load(html);
   //jquery get href from a tag
-  // console.log($('a'))
-  // console.log($('.list-animal-id'))
-  let linkElements = $('a');
-  linkElements.each(function(k){
-    // console.log(linkElements[k].attribs.href);
-    //put data in an array and concat the host
-    if(linkElements[k].attribs.href !== 'http://www.petango.com') {
+  let linkElements = $('.list-animal-name a');
+  linkElements.each(function(i, k) {
+    //put data in an array and concat the host name
+    if(k.attribs.href !== 'http://www.petango.com') {
       urlStrings.push('http://ws.petango.com/Webservices/adoptablesearch/'
-                      + linkElements[k].attribs.href);
+                      + k.attribs.href);
     }
   });
   console.log(urlStrings);
