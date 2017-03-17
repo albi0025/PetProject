@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Not much happening yet...
+        Now we are getting somewhere...
       </div>
     );
   }

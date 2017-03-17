@@ -10,6 +10,20 @@ const port = 3000;
 const app = express();
 const compiler = webpack(config);
 
+//MongoDB -- Mongoose Import - Start
+let uriUtil = require('mongodb-uri');
+let mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+let mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/PetProject';
+let mongooseUri = uriUtil.formatMongoose(mongodbUri);
+let options = {
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+};
+mongoose.connect(mongooseUri, options);
+//End
+
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath

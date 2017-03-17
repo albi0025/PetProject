@@ -1,7 +1,7 @@
 {
   "name": "react-webpack-starter",
   "version": "1.0.0",
-  "description": "Starter kit for React and Redux Pluralsight course by Cory House",
+  "description": "Pet Project - 1st Project MTCS",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel testonly:watch open:src lint:watch",
@@ -18,6 +18,8 @@
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^4.9.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-router": "2.4.0",
