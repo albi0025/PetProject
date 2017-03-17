@@ -1,4 +1,12 @@
-## Montana Code School: Pet Project
+# Montana Code School: Pet Project
 
-## Github test
-## Last final test for github. Delete this once pulled
+## Run
+~~~
+$ npm install
+$ npm start
+~~~
+
+## Testing
+~~~
+$ npm test
+~~~
