@@ -39,15 +39,40 @@ scraper.parseAnimalListResponse = function(html) {
                       + k.attribs.href);
     }
   });
-  console.log(urlStrings);
   return urlStrings;
 };
 
+//This function takes the html from each individual pet and parses it into
+//a pet object and returns an object.
+
 scraper.parseIndividualAnimalResponse = function(html) {
-  return {};
+
+  let $ = cheerio.load(html);
+
+  let petObject = {};
+
+  petObject.animalId = $('#lblID').text();
+  petObject.animalPhotos = [$('#imgAnimalPhoto').attr('src')];
+  petObject.name = $('#lbName').text();
+  petObject.species = $('#lblSpecies').text();
+  petObject.breed = $('#lbBreed').text();
+  petObject.age = $('#lbAge').text();
+  petObject.gender = $('#lbSex').text();
+  petObject.size = $('#lblSize').text();
+  petObject.color = $('#lblColor').text();
+  if($('#ImageAltered').attr('src') == 'images/GreenCheck.JPG') {
+    petObject.spayNeuter = true;
+  } else {
+    petObject.spayNeuter = false;
+  }
+  petObject.declawed = $('#lbDeclawed').text();
+  petObject.intakeDate = $('#lblIntakeDate').text();
+  petObject.intakeDate = $('#lblIntakeDate').text();
+  petObject.description = $('#lbDescription').text();
+
+  console.log(petObject)
+  return petObject;
 };
-
-
 
 
 
