@@ -1,14 +1,10 @@
 import {expect} from 'chai';
-import scrape from '../../helpers/scrape';
-
-xdescribe('Our first test', () => {
-  it('should pass', () => {
-    expect(true).to.eql(true);
-  });
-});
+let scrape = require('../../helpers/scrape');
 
 describe('Scrape', () => {
-  describe('scrapePetango', () => {
+  //We need to figure out how to run callbacks and mock the data so that we can
+  //run this test.
+  xdescribe('scrapePetango', () => {
     it('works', () => {
       expect(scrape.scrapePetango("http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimals.aspx?species=Dog&sex=All&agegroup=All&colnum=1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d")).to.eql([]);
     });
