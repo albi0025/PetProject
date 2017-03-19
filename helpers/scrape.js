@@ -4,25 +4,24 @@ let cheerio = require('cheerio');
 let scraper = {};
 
 
-scraper.scrapePetango = function(url) {
+scraper.scrapePetango = function(url, callback) {
   //Make a GET request
   request(url, function (error, response, body) {
-    // console.log('error:', error); // Print the error if one occurred
-    // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    // console.log('body:', body); // Print the HTML
-  });
-  //Parse the response and return and array of Urls to the animals
-  let animalUrls = this.parseAnimalListResponse("");
-
-  //Make a GET request to each individual url
-  let petArray = [];
-  for(let i = 0; i <animalUrls.length; i++) {
-    //make a GET request using animalUrls[i]
-    //Parse response to get a pet object
-    petArray.push(this.parseIndividualAnimalResponse(""));
-  }
-  //Return a list of pet objects
-  return petArray;
+    //Parse the response and return and array of Urls to the animals
+    let animalUrls = this.parseAnimalListResponse(body);
+    //Make a GET request to each individual url
+    let petArray = [];
+    for(let i = 0; i <animalUrls.length; i++) {
+      //make a GET request using animalUrls[i]
+      request(animalUrls[i], function (error, response, body) {
+        //Parse response to get a pet object
+        petArray.push(this.parseIndividualAnimalResponse(body));
+        if(petArray.length === animalUrls.length){
+          callback(petArray);
+        }
+      }.bind(this));
+    }
+  }.bind(this));
 };
 
 //This function takes a response which is an HTML string
@@ -44,11 +43,8 @@ scraper.parseAnimalListResponse = function(html) {
 
 //This function takes the html from each individual pet and parses it into
 //a pet object and returns an object.
-
 scraper.parseIndividualAnimalResponse = function(html) {
-
   let $ = cheerio.load(html);
-
   let petObject = {};
 
   petObject.animalId = $('#lblID').text();
@@ -70,10 +66,8 @@ scraper.parseIndividualAnimalResponse = function(html) {
   petObject.intakeDate = $('#lblIntakeDate').text();
   petObject.description = $('#lbDescription').text();
 
-  console.log(petObject)
   return petObject;
 };
-
 
 
 

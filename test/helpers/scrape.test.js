@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-let scrape = require('../../helpers/scrape');
+import scrape from '../../helpers/scrape';
 
 xdescribe('Our first test', () => {
   it('should pass', () => {
@@ -10,7 +10,7 @@ xdescribe('Our first test', () => {
 describe('Scrape', () => {
   describe('scrapePetango', () => {
     it('works', () => {
-      expect(scrape.scrapePetango("")).to.eql([]);
+      expect(scrape.scrapePetango("http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimals.aspx?species=Dog&sex=All&agegroup=All&colnum=1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d")).to.eql([]);
     });
   });
   let html = `
