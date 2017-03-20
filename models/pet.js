@@ -1,6 +1,6 @@
 let mongoose = require("mongoose");
 
-let PetsSchema = new mongoose.Schema({
+let PetSchema = new mongoose.Schema({
   url: String,
   animalId: Number,
   name: String,
@@ -17,4 +17,4 @@ let PetsSchema = new mongoose.Schema({
   description: String
 });
 
-module.exports = mongoose.model('Pets', PetsSchema);
+module.exports = mongoose.model('Pet', PetSchema);

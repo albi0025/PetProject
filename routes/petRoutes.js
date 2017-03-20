@@ -1,6 +1,6 @@
 import React from 'react';
 import webpack from 'webpack';
-const Pets = require ('../models/pets');
+const Pet = require ('../models/pet');
 let express = require('express');
 let router = express.Router();
 
@@ -15,7 +15,7 @@ router.route('/petsdata')
 
 .post(function(req, res, next){
 
-  let pets = new Pets();
+  let pets = new Pet();
 
   pets.url = req.body.url;
   pets.animalId = req.body.animalId;

@@ -22,7 +22,7 @@ export default class DisplayPets extends React.Component {
   }
 
   render() {
-    let petpics = this.state.petPics.map(function(pet){
+    let petPull = this.state.petPics.map(function(pet){
       return(
         <div key={pet.name} id={pet.animalId}>
           <img src={pet.url}></img>
@@ -34,8 +34,13 @@ export default class DisplayPets extends React.Component {
 
     return (
     <div>
-      {petpics}
+      {petPull}
     </div>
     );
   }
 }
+
+
+DisplayPets.PropTypes = {
+  petPics: React.PropTypes.array
+};

@@ -28,7 +28,7 @@ let options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
 mongoose.connect(mongooseUri, options);
-const Pets = require('../models/pets');
+const Pet = require('../models/pet');
 const petRoutes = require('../routes/petRoutes');
 //End
 
@@ -45,7 +45,7 @@ app.use('/', petRoutes);
 
 app.post('/petsdata',function(req,res){
 
-  let pets = new Pets({
+  let pets = new Pet({
     url: req.body.url,
     animalId: req.body.animalId,
     name: req.body.name,
