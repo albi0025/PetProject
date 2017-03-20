@@ -1,5 +1,7 @@
 import React from 'react';
 import mongoose from 'mongoose';
+import { Button, Row, Col, Icon, Card, CardTitle, Navbar, Navitem } from 'react-materialize';
+
 
 export default class DisplayPets extends React.Component {
   constructor() {
@@ -25,19 +27,22 @@ export default class DisplayPets extends React.Component {
     let petPics = this.state.petPics.map(function(pet){
       return(
         <div key={pet.name} id={pet.animalId}>
+          <Card header={<CardTitle reveal image={pet.mainPhoto} waves="light"/>}
+            title={pet.name}
+            reveal={<p>{pet.description}</p>}>
+            <p><a href="#">This is a link</a></p>
+          </Card>
+        </div>
 
-          <img src={pet.url}></img>
-          <h2>{pet.name}</h2>
-          <h3>{pet.description}</h3>
-
-      </div>
     );
     });
 
     return (
-    <div>
-      {petPics}
-    </div>
+      <Row>
+        <Col lg={4}>
+          {petPics}
+        </Col>
+      </Row>
     );
   }
 }
@@ -45,3 +50,8 @@ export default class DisplayPets extends React.Component {
 DisplayPets.propTypes = {
   petPics: React.PropTypes
 };
+
+//Basic Pet Display
+// <img src={pet.mainPhoto}></img>
+// <h2>{pet.name}</h2>
+// <h3>{pet.description}</h3>

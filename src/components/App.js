@@ -1,5 +1,6 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
+import { Col, Row } from 'react-materialize';
 
 class App extends React.Component {
 
@@ -12,8 +13,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Now we are getting somewhere...
-        <DisplayPets/>
+      <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+        <div className="container">
+          <DisplayPets/>
+        </div>
       </div>
     );
   }
