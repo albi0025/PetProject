@@ -24,6 +24,8 @@ let options = {
 mongoose.connect(mongooseUri, options);
 //End
 
+app.use(express.static('src'));
+
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
