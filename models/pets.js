@@ -1,7 +1,9 @@
 let mongoose = require("mongoose");
 
 let PetsSchema = new mongoose.Schema({
+  url: String,
   animalId: Number,
+  name: String,
   mainPhoto: String,
   species: String,
   breed: String,
