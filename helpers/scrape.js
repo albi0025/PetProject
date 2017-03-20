@@ -48,7 +48,7 @@ scraper.parseIndividualAnimalResponse = function(html) {
   let petObject = {};
 
   petObject.animalId = $('#lblID').text();
-  petObject.animalPhotos = [$('#imgAnimalPhoto').attr('src')];
+  petObject.mainPhoto = $('#imgAnimalPhoto').attr('src');
   petObject.name = $('#lbName').text();
   petObject.species = $('#lblSpecies').text();
   petObject.breed = $('#lbBreed').text();
