@@ -1,5 +1,5 @@
 import React from 'react';
-
+import DisplayPets from './DisplayPets';
 
 class App extends React.Component {
 
@@ -7,10 +7,13 @@ class App extends React.Component {
     super();
   }
 
+
+
   render() {
     return (
       <div>
         Now we are getting somewhere...
+        <DisplayPets/>
       </div>
     );
   }
