@@ -1,6 +1,6 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
-import { Col, Row } from 'react-materialize';
+import { Button, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
 
 class App extends React.Component {
 
@@ -14,9 +14,11 @@ class App extends React.Component {
     return (
       <div>
       <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
-        <div className="container">
-          <DisplayPets/>
-        </div>
+        <Grid>
+          <Row>
+            <DisplayPets/>
+          </Row>
+        </Grid>
       </div>
     );
   }
