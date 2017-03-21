@@ -33,10 +33,6 @@ let baltazaar = new Pet(
   intakeDate: '2/5/2017',
   description: 'Let me introduce myself, my name is Baltazaar.' });
 
-baltazaar.save(function(err, pet, next){
-  if (err) console.log(err);
-});
-
 //Loki only exists in the database not in the scrape
 let loki = new Pet(
   { animalId: 34680077,
@@ -53,44 +49,29 @@ let loki = new Pet(
    intakeDate: '2/17/2017',
    description: 'Woof' });
 
-loki.save(function(err, pet, next){
-  if (err) console.log(err);
+let loretta = new Pet(
+  { animalId: 33927386,
+  mainPhoto: '//media.petango.com/sms/photos/1095/16b208ca-e425-4994-9b8e-d9aab96d0ddf.jpg',
+  name: 'Loretta(Ariel)',
+  species: 'Dog',
+  breed: 'Great Pyrenees/Mix',
+  age: '2 years 4 months 15 days',
+  gender: 'Female',
+  size: 'Large',
+  color: 'White',
+  spayNeuter: false,
+  declawed: 'No',
+  intakeDate: '3/10/2017',
+  description: 'I am super cute'
 });
 
-let scrapeArray = [
-  { animalId: 34790773,
-    mainPhoto: '//media.petango.com/sms/photos/1095/11d1877d-8611-4f53-90db-0621d709b317.jpg',
-    name: 'Baltazaar',
-    species: 'Dog',
-    breed: 'Akita/Mix',
-    age: '1 year  1 month 16 days',
-    gender: 'Male',
-    size: 'Large',
-    color: 'Tan/Black',
-    spayNeuter: true,
-    declawed: 'No',
-    intakeDate: '2/5/2017',
-    description: 'Let me introduce myself, my name is Baltazaar.' },
-    { animalId: 33927386,
-    mainPhoto: '//media.petango.com/sms/photos/1095/16b208ca-e425-4994-9b8e-d9aab96d0ddf.jpg',
-    name: 'Loretta(Ariel)',
-    species: 'Dog',
-    breed: 'Great Pyrenees/Mix',
-    age: '2 years 4 months 15 days',
-    gender: 'Female',
-    size: 'Large',
-    color: 'White',
-    spayNeuter: false,
-    declawed: 'No',
-    intakeDate: '3/10/2017',
-    description: 'I am super cute' }
-];
-
-syncRunner.syncPets(scrapeArray);
+let scrapeArray = [baltazaar, loretta];
 
 // Delete every record from the database before we make a test run
-// Pet.remove({}, function(err, pet){
-//   if(err){
-//     console.log(err);
-//   }
-// });
+Pet.remove({}, function(err, pet){
+  baltazaar.save(function(err, pet, next){
+    loki.save(function(err, pet, next){
+      syncRunner.syncPets(scrapeArray);
+    });
+  });
+});
