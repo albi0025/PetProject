@@ -584,8 +584,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     it('works', () => {
       expect(scrape.parseIndividualAnimalResponse(individualPetHtml)).to.eql(
         {
-          animalId: "33150855",
-          animalPhotos:["//media.petango.com/sms/photos/1095/4c8cd17e-b45e-4869-a08b-e60c053b2ce8.jpg"],
+          animalId: 33150855,
+          mainPhoto:"//media.petango.com/sms/photos/1095/4c8cd17e-b45e-4869-a08b-e60c053b2ce8.jpg",
           name: "Lucas",
           species: "Dog",
           breed: "German Shepherd/Mix",

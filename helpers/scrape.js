@@ -47,7 +47,7 @@ scraper.parseIndividualAnimalResponse = function(html) {
   let $ = cheerio.load(html);
   let petObject = {};
 
-  petObject.animalId = $('#lblID').text();
+  petObject.animalId = parseInt($('#lblID').text());
   petObject.mainPhoto = $('#imgAnimalPhoto').attr('src');
   petObject.name = $('#lbName').text();
   petObject.species = $('#lblSpecies').text();
