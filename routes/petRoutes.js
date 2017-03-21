@@ -1,6 +1,6 @@
 import React from 'react';
 import webpack from 'webpack';
-const Pets = require ('../models/pets');
+const Pet = require ('../models/pet');
 let express = require('express');
 let router = express.Router();
 
@@ -13,24 +13,26 @@ router.use(function(req, res, next){
 
 router.route('/petsdata')
 
-.post(function(req,res, next){
+.post(function(req, res, next){
 
-  let pets = new Pets();
+  let pet = new Pet();
 
-  pets.animalid = req.body.animalid;
-  pets.mainPhoto = req.body.mainPhoto;
-  pets.species = req.body.species;
-  pets.breed = req.body.breed;
-  pets.age = req.body.age;
-  pets.gender = req.body.gender;
-  pets.size = req.body.size;
-  pets.color = req.body.colorspayedneutered;
-  pets.spayneuter = req.body.spayneuter;
-  pets.declawed = req.body.declawed;
-  pets.intakedate = req.body.intakedate;
-  pets.description = req.body.description;
+  pet.url = req.body.url;
+  pet.animalId = req.body.animalId;
+  pet.name = req.body.name;
+  pet.mainPhoto = req.body.mainPhoto;
+  pet.species = req.body.species;
+  pet.breed = req.body.breed;
+  pet.age = req.body.age;
+  pet.gender = req.body.gender;
+  pet.size = req.body.size;
+  pet.color = req.body.color;
+  pet.spayNeuter = req.body.spayNeuter;
+  pet.declawed = req.body.declawed;
+  pet.intakeDate = req.body.intakeDate;
+  pet.description = req.body.description;
 
-  pets.save(function(err, pets, next){
+  pet.save(function(err, pets, next){
     if(err){
       return next(err);
     } else {
@@ -40,7 +42,7 @@ router.route('/petsdata')
 })
 
 .get( function(req, res, next){
-  Pets.find(function(err, pets){
+  Pet.find(function(err, pets){
     if(err){
       next(err);
 
