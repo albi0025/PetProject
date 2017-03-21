@@ -26,9 +26,9 @@ export default class DisplayPets extends React.Component {
   render() {
     let petPics = this.state.petPics.map(function(pet){
       return(
-        <div key={pet.name} id={pet.animalId}>
+        <div className="pet-div" key={pet.name} id={pet.animalId}>
           <Col xs={6} md={4} lg={4}>
-            <Thumbnail src={pet.mainPhoto} alt="242x200">
+            <Thumbnail className="portrait" src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
               <p>
