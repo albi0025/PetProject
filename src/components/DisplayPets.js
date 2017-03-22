@@ -30,7 +30,7 @@ export default class DisplayPets extends React.Component {
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
           <Col xs={6} md={4} lg={4}>
-            <Thumbnail src={pet.mainPhoto} alt="Image">
+            <Thumbnail className="pet-card" src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
               <p>

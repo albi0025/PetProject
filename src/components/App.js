@@ -13,12 +13,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Grid>
-          <Row>
-            <Navigation/>
-              {this.props.children}
-          </Row>
-        </Grid>
+        <Navigation/>
+          {this.props.children}
       </div>
     );
   }
