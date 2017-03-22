@@ -1,0 +1,66 @@
+
+#mainDiv {
+  display: inline-grid;
+  background-color: #9b9b8f;
+  background-size: 100%;
+
+}
+
+.thumbnail .pet-card {
+   width: 340px;
+   height: 575px;
+   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+}
+
+.thumbnail.pet-card img {
+   width: 100%;
+   /*height: 425px;*/
+}
+
+.yellow-button {
+  background-color: #F1B73F;
+}
+
+.blue-button {
+  background-color: #007187;
+  color: white;
+}
+
+/*.navbar-default {
+ background-color: #1f1f1f ;
+ color: white;
+
+}
+
+.navbar-nav {
+ margin-left: 55vw;
+ margin-top: -3vw;
+}
+
+.navbar-header {
+ margin-top: 1vw;
+}
+
+.navbar-brand {
+ font-size: 250%;
+ color: #007187 ;
+}
+
+.nav li a {
+  display: inline;
+  float: none;
+  clear: right;
+}*/
+
+#tag {
+ font-size: 20px;
+}
+/*
+@media all and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+ #tag {
+   display: none;
+ }*/
+
+ .homethumb {
+   background-size: 100%;
+ }

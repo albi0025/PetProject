@@ -1,13 +1,15 @@
 
 let request = require('request');
+// import request from 'request';
 let cheerio = require('cheerio');
+// import cheerio from 'cheerio';
 let scraper = {};
 
 
 scraper.scrapePetango = function(url, callback) {
   //Make a GET request
   request(url, function (error, response, body) {
-    //Parse the response and return and array of Urls to the animals
+    //Parse the response and return an array of Urls to the animals
     let animalUrls = this.parseAnimalListResponse(body);
     //Make a GET request to each individual url
     let petArray = [];
@@ -25,7 +27,7 @@ scraper.scrapePetango = function(url, callback) {
 };
 
 //This function takes a response which is an HTML string
-//and returns and array of url strings.
+//and returns an array of url strings.
 scraper.parseAnimalListResponse = function(html) {
   let urlStrings = [];
   let $ = cheerio.load(html);
