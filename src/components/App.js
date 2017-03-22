@@ -1,27 +1,25 @@
 import React from 'react';
+import Home from './Home';
+import Navigation from './Navigation';
 import DisplayPets from './DisplayPets';
 import { Button, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
 
-class App extends React.Component {
+export default class App extends React.Component {
 
   constructor() {
     super();
   }
 
-
-
   render() {
     return (
       <div>
-      <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
         <Grid>
           <Row>
-            <DisplayPets/>
+            <Navigation/>
+              {this.props.children}
           </Row>
         </Grid>
       </div>
     );
   }
 }
-
-export default App;

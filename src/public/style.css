@@ -1,0 +1,59 @@
+
+#mainDiv {
+  display: inline-grid;
+  background-color: #00A47D;
+  background-size: 100%;
+
+}
+
+.thumbnail {
+   width: 340px;
+   height: 575px;
+   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+}
+
+.thumbnail img {
+   width: 100%;
+   height: 425px;
+}
+
+.yellow-button {
+  background-color: #F1B73F;
+}
+
+.blue-button {
+  background-color: #007187;
+  color: white;
+}
+
+.navbar-default {
+ background-color: #FF7E04 ;
+
+}
+
+.navbar-nav {
+ margin-left: 55vw;
+ margin-top: -3vw;
+}
+
+.navbar-header {
+ margin-top: 1vw;
+}
+
+.navbar-brand {
+ font-size: 250%;
+ color: #007187 ;
+}
+
+#tag {
+ font-size: 175%;
+}
+
+/*@media all and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+ #tag {
+   display: none;
+ }*/
+
+ .homethumb {
+   background-size: 100%;
+ }

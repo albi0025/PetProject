@@ -1,6 +1,8 @@
 import React from 'react';
 import mongoose from 'mongoose';
 import { Button, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../public/style.css';
 
 
 export default class DisplayPets extends React.Component {
@@ -28,7 +30,7 @@ export default class DisplayPets extends React.Component {
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
           <Col xs={6} md={4} lg={4}>
-            <Thumbnail className="portrait" src={pet.mainPhoto} alt="Image">
+            <Thumbnail src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
               <p>
