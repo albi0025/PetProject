@@ -32,8 +32,8 @@ export default class DisplayPets extends React.Component {
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
               <p>
-                <Button bsStyle="primary">Button</Button>&nbsp;
-                <Button bsStyle="default">Button</Button>
+                <Button className="yellow-button">Button</Button>&nbsp;
+                <Button className="blue-button" bsStyle="default">Button</Button>
               </p>
             </Thumbnail>
           </Col>

@@ -16,6 +16,9 @@ let url = "http://ws.petango.com/Webservices/adoptablesearch/" +
   "wsAdoptableAnimals.aspx?species=Dog&sex=All&agegroup=All&colnum=" +
   "1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
 
+// let url = "http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimals.aspx?species=Cat&sex=All&agegroup=All&colnum=3&css=http://heartofthevalleyshelter.org/wp-content/petango_css/petpoint2.css&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
+
+
 scrapeRunner.scrapePetango(url, function(arr) {
   syncRunner.syncPets(arr);
   console.log(arr);
