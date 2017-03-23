@@ -9,7 +9,8 @@ export default class DisplayPets extends React.Component {
   constructor() {
     super();
     this.state = {
-      petPics: []
+      petPics: [],
+      species: window.location.hash.split("species=")[1].split("&")[0]
     };
     this.loadPetsFromDb = this.loadPetsFromDb.bind(this);
   }
@@ -24,9 +25,15 @@ export default class DisplayPets extends React.Component {
     .then(data => this.setState({
       petPics: data}));
   }
-
+    //create a new array that is a filtered version of this.state.petPics
+    //example: if this.state.species === dog than the resulting array will only have dogs
+    //When creating the petPics array, map over filtered array instead of this.state.petPics
   render() {
-    let petPics = this.state.petPics.map(function(pet){
+    let catOrDogArray = this.state.petPics.filter(function(pet) {
+      return pet.species.toLowerCase() === this.state.species.toLowerCase();
+    }.bind(this));
+
+    let petPics = catOrDogArray.map(function(pet){
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
           <Col xs={12} md={4} lg={4}>
