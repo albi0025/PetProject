@@ -1,6 +1,7 @@
 import React from 'react';
 import mongoose from 'mongoose';
-import { Button, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
+import PopUpPet from './PopUpPet';
+import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
 
@@ -33,6 +34,9 @@ export default class DisplayPets extends React.Component {
       return pet.species.toLowerCase() === this.state.species.toLowerCase();
     }.bind(this));
 
+    let self = this;
+    let lgClose = () => this.setState({ lgShow: false });
+
     let petPics = catOrDogArray.map(function(pet){
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
@@ -40,10 +44,18 @@ export default class DisplayPets extends React.Component {
             <Thumbnail className="pet-card" src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
-              <p>
-                <Button className="yellow-button">Button</Button>&nbsp;
-                <Button className="blue-button" bsStyle="default">Button</Button>
-              </p>
+              <ButtonToolbar>
+
+                    <Button key={pet.animalId} bsStyle="primary" onClick={()=>{
+                      self.setState({ lgShow: true });
+                      console.log("button clicked!");
+                    }}>
+
+                      Pet Information
+                    </Button>
+
+                    <PopUpPet pet={pet} show={self.state.lgShow} onHide={lgClose} />
+                  </ButtonToolbar>
             </Thumbnail>
           </Col>
         </div>
