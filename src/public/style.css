@@ -3,7 +3,34 @@
   display: inline-grid;
   background-color: #9b9b8f;
   background-size: 100%;
+}
 
+.Navbar {
+  position: fixed;
+  width: 100vw;
+  z-index: 20;
+}
+.header {
+  background: linear-gradient(
+  rgba(20,20,20, .6),
+  rgba(20,20,20, .6)),
+  url(/images/montana-lake.jpg);
+  -webkit-filter: brightness(100%);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  border-bottom: 30px;
+  border-style: solid;
+  border-color: #9b9b8f;
+  border-spacing: 100px;
+  color: white;
+  text-align: center;
+}
+
+
+
+.words {
+ line-height: 60vh;
 }
 
 .thumbnail .pet-card {
@@ -25,41 +52,6 @@
   background-color: #007187;
   color: white;
 }
-
-/*.navbar-default {
- background-color: #1f1f1f ;
- color: white;
-
-}
-
-.navbar-nav {
- margin-left: 55vw;
- margin-top: -3vw;
-}
-
-.navbar-header {
- margin-top: 1vw;
-}
-
-.navbar-brand {
- font-size: 250%;
- color: #007187 ;
-}
-
-.nav li a {
-  display: inline;
-  float: none;
-  clear: right;
-}*/
-
-#tag {
- font-size: 20px;
-}
-/*
-@media all and (max-width: 800px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
- #tag {
-   display: none;
- }*/
 
  .homethumb {
    background-size: 100%;

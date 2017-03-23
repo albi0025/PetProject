@@ -1,23 +1,26 @@
 import React from 'react';
-import { Navbar, NavItem, Nav, Col } from 'react-bootstrap';
+import DisplayPets from './DisplayPets';
+import { Navbar, NavItem, Nav, Col, MenuItem, NavDropdown } from 'react-bootstrap';
 
 export default class Navigation extends React.Component {
 
   render() {
     return(
-      <div>
-          <Navbar>
-            <Navbar.Header>
-             <Navbar.Brand>
-               <a href="#">Pet Project</a>
-             </Navbar.Brand>
-            </Navbar.Header>
-            <Nav className="item-right">
-              <NavItem id="tag" eventKey={1} href="#">Dogs</NavItem>
-              <NavItem id="tag" eventKey={2} href="#">Cats</NavItem>
-              <NavItem id="tag" eventKey={3} href="#">Sponsorship</NavItem>
+      <div className="Navbar">
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Pet Projects</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav pullRight>
+              <NavItem eventKey={1} href="./DisplayPets">Dogs</NavItem>
+              <NavItem eventKey={2} href="#">Cats</NavItem>
             </Nav>
-          </Navbar>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }

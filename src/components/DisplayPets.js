@@ -29,7 +29,7 @@ export default class DisplayPets extends React.Component {
     let petPics = this.state.petPics.map(function(pet){
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
-          <Col xs={6} md={4} lg={4}>
+          <Col xs={12} md={4} lg={4}>
             <Thumbnail className="pet-card" src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
@@ -40,7 +40,7 @@ export default class DisplayPets extends React.Component {
             </Thumbnail>
           </Col>
         </div>
-    );
+      );
     });
 
     return (

@@ -7,6 +7,11 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
+        <div className="header">
+          <h1 className="words">Welcome to Pet Project</h1>
+            <div className="headerimg">
+          </div>
+        </div>
         <Grid>
           <Row>
            <Col xs={12} md={6} lg={6}>
@@ -23,7 +28,7 @@ export default class Home extends React.Component {
         </Grid>
         <Grid>
           <Row>
-            <div className="container-fluid">
+            <div>
               <h1>Sponsorship</h1>
               <p></p>
             </div>
