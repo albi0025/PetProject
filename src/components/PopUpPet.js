@@ -8,12 +8,9 @@ import '../public/style.css';
 
 
 
-const PopUpPets = React.createClass({
+const PopUpPet = React.createClass({
   render() {
 
-    let petPop = this.state.petPics.filter(function(pet) {
-      return pet.species.toLowerCase() === this.state.species.toLowerCase();
-    }.bind(this));
 
     return (
         <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
@@ -36,4 +33,4 @@ const PopUpPets = React.createClass({
 
 
 
-export default PopUpPets;
+export default PopUpPet;

@@ -49,6 +49,7 @@ export default class DisplayPets extends React.Component {
                     <Button key={pet.animalId} bsStyle="primary" onClick={()=>{
                       self.setState({ lgShow: true });
                       console.log("button clicked!");
+
                     }}>
 
                       Pet Information
