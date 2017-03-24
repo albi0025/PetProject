@@ -36,7 +36,6 @@ export default class DisplayPets extends React.Component {
     let petPics = catOrDogArray.map(function(pet){
       return(
         <div className="pet-div" key={pet.name} id={pet.animalId}>
-          <Col xs={12} md={4} lg={4}>
             <Thumbnail className="pet-card" src={pet.mainPhoto} alt="Image">
               <h3>{pet.name}</h3>
               <p>Sponsor Me!</p>
@@ -45,14 +44,15 @@ export default class DisplayPets extends React.Component {
                 <Button className="blue-button" bsStyle="default">Button</Button>
               </p>
             </Thumbnail>
-          </Col>
         </div>
       );
     });
 
     return (
-      <div>
-        {petPics}
+      <div id="wrapper">
+        <div id="columns">
+          {petPics}
+        </div>
       </div>
     );
   }
