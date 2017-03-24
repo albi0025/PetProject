@@ -84,16 +84,6 @@
   transform: scale(1.01);
 }
 
-
-
-.pet-div {
-  display: inline-grid;
-  width: 100vw;
-  height: 100vh;
-  background-color: #dbdbdb;
-  font-family: 'Raleway', sans-serif;
-}
-
 .thumbnail.pet-card {
    box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
    margin: 0 2px 15px;
