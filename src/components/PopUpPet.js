@@ -18,9 +18,23 @@ const PopUpPet = React.createClass({
             <Modal.Title id="contained-modal-title-lg">Pet Description</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>{this.props.pet.name}</h4>
 
+
+            <h2>{this.props.pet.name}</h2>
+
+            <p>{this.props.pet.species}</p>
+            <p>{this.props.pet.breed}</p>
+            <p>{this.props.pet.age}</p>
+            <p>{this.props.pet.gender}</p>
+            <p>{this.props.pet.size}</p>
+            <p>{this.props.pet.color}</p>
+            <p>{this.props.pet.spayNeuter}</p>
+            <p>{this.props.pet.declawed}</p>
+            <p>{this.props.pet.intakeDate}</p>
             <p>{this.props.pet.description}</p>
+
+
+
 
           </Modal.Body>
           <Modal.Footer>
