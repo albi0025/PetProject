@@ -1,7 +1,7 @@
 
 #mainDiv {
   display: inline-grid;
-  background-color: #dbdbdb;
+  background-color: #9b9b8f;
   background-size: 100%;
 }
 
@@ -9,89 +9,28 @@
   position: fixed;
   width: 100vw;
   z-index: 20;
-  margin-top: 0px;
-  padding-top: 0px;
-  font-family: 'Raleway', sans-serif;
-}
-
-
-
-.container{
-  overflow: hidden;
-  background-size: cover;
-  width: 100%;
-  margin: 0%;
-  padding: 0%;
 }
 .header {
-  -webkit-transition: transform .5s ease-in-out;
   background: linear-gradient(
-  rgba(20,20,20, .5),
-  rgba(20,20,20, .6)), url(/images/logo3.png) no-repeat, url(/images/dogsrunning.jpg);
-  background-size: cover, 23vw 16vh;
-  background-position: center;
-  position: relative;
+  rgba(20,20,20, .6),
+  rgba(20,20,20, .6)),
+  url(/images/montana-lake.jpg);
+  -webkit-filter: brightness(100%);
+  background-size: cover;
   width: 100vw;
   height: 100vh;
-  margin-top: -20px;
-  font-family: 'Raleway', sans-serif;
-  text-align: center;
+  border-bottom: 30px;
+  border-style: solid;
+  border-color: #9b9b8f;
+  border-spacing: 100px;
   color: white;
+  text-align: center;
 }
 
-.header img {
-  max-width: 100%;
-  -moz-transition: all 1.4s;
-  -webkit-transition: all 1.4s;
-  -webkit-transition: all .5s ease-in-out;
-}
 
-.header:hover {
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
 
 .words {
- line-height: 70vh;
-
-}
-
-.outterhomediv {
-}
-
-.homediv {
-  overflow: hidden;
-  margin-top: 70px;
-  background-color: #f2f2f2;
-  background-size: 100%;
-  font-family: 'Raleway', sans-serif;
-  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
-  -webkit-transition: transform .5s ease-in-out;
-}
-
-.homediv img {
-  max-width: 99%;
-  max-height: 99%;
-  -moz-transition: all 1.4s;
-  -webkit-transition: all 1.4s;
-  -webkit-transition: all .5s ease-in-out;
-}
-
-.homediv:hover img {
-  -moz-transform: scale(1.01);
-  -webkit-transform: scale(1.01);
-  transform: scale(1.01);
-}
-
-
-
-.pet-div {
-  display: inline-grid;
-  width: 100vw;
-  height: 100vh;
-  background-color: #dbdbdb;
-  font-family: 'Raleway', sans-serif;
+ line-height: 60vh;
 }
 
 .thumbnail.pet-card {
@@ -108,11 +47,6 @@
    -o-transition: all .2s ease;
    transition: all .2s ease;
 }
-
-.pet-card {
-  background-color: #f2f2f2;
-}
-
 
 .thumbnail.pet-card img {
    width: 100%;
@@ -152,29 +86,17 @@
 		-moz-column-count: 3;
 		column-count: 3;
 	}
-
 }
 
 .yellow-button {
   background-color: #F1B73F;
-  font-family: 'Raleway', sans-serif;
 }
 
 .blue-button {
   background-color: #007187;
   color: white;
-  font-family: 'Raleway', sans-serif;
 }
 
- .sponsorship {
-  width: 100vw;
-  height: 100vh;
-  margin-top: 100px;
-  text-align: center;
-  font-family: 'Raleway', sans-serif;
- }
-
- .sponsorhead {
-  line-height: 60vh;
-  font-family: 'Raleway', sans-serif;
+ .homethumb {
+   background-size: 100%;
  }
