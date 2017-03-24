@@ -8,9 +8,9 @@ export default class Navigation extends React.Component {
     return(
       <div className="Navbar">
         <Navbar inverse collapseOnSelect>
-          <Navbar.Header>
+          <Navbar.Header className="navbar-header">
             <Navbar.Brand>
-              <a href="#">Pet Projects</a>
+              <a href="#">Pet Project</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
