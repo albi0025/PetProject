@@ -17,18 +17,14 @@ export default class Home extends React.Component {
         <Grid>
           <Row>
             <Col xs={12} md={6} lg={6}>
-              <div className="outterhomediv">
-                <Thumbnail className="homediv" src="../images/mainpuppy.jpg" alt="242x200">
+                <Thumbnail className="homediv1" src="../images/mainpuppy.jpg" alt="242x200">
                   <h1><Link to={{ pathname: '/DisplayPets', query: { species: 'dog' } }}>Dogs</Link></h1>
                 </Thumbnail>
-              </div>
             </Col>
             <Col xs={12} md={6} lg={6}>
-              <div className="outterhomediv">
-                <Thumbnail className="homediv" src="../images/maincat.jpg" alt="242x200">
+                <Thumbnail className="homediv2" src="../images/maincat.jpg" alt="242x200">
                   <h1><Link to={{ pathname: '/DisplayPets', query: { species: 'cat' } }}>Cats</Link></h1>
                 </Thumbnail>
-              </div>
             </Col>
           </Row>
         </Grid>

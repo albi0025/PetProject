@@ -23,12 +23,13 @@
   margin: 0%;
   padding: 0%;
 }
+
 .header {
   -webkit-transition: transform .5s ease-in-out;
   background: linear-gradient(
   rgba(20,20,20, .5),
   rgba(20,20,20, .6)), url(/images/logo3.png) no-repeat, url(/images/dogsrunning.jpg);
-  background-size: cover, 23vw 16vh;
+  background-size: cover, 23vw;
   background-position: center;
   position: relative;
   width: 100vw;
@@ -54,44 +55,49 @@
 
 .words {
  line-height: 70vh;
-
 }
 
-.outterhomediv {
-}
-
-.homediv {
+.homediv1 {
+  display:block;
+  margin: 3%;
   overflow: hidden;
-  margin-top: 70px;
   background-color: #f2f2f2;
-  background-size: 100%;
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
   -webkit-transition: transform .5s ease-in-out;
 }
 
-.homediv img {
-  max-width: 99%;
-  max-height: 99%;
+.homediv1 img {
   -moz-transition: all 1.4s;
   -webkit-transition: all 1.4s;
   -webkit-transition: all .5s ease-in-out;
 }
 
-.homediv:hover img {
+.homediv1:hover img {
   -moz-transform: scale(1.01);
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
 }
 
-
-
-.pet-div {
-  display: inline-grid;
-  width: 100vw;
-  height: 100vh;
-  background-color: #dbdbdb;
+.homediv2 {
+  display:block;
+  margin: 3%;
+  background-color: #f2f2f2;
   font-family: 'Raleway', sans-serif;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  -webkit-transition: transform .5s ease-in-out;
+}
+
+.homediv2 img {
+  -moz-transition: all 1.4s;
+  -webkit-transition: all 1.4s;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+.homediv2:hover img {
+  -moz-transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 .thumbnail.pet-card {
