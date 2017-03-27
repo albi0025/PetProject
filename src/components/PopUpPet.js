@@ -1,14 +1,13 @@
-import React from 'react';
+// import React from 'react';
 import mongoose from 'mongoose';
 import ReactDOM from 'react-dom';
 import { Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 import DisplayPets from './DisplayPets';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
+import React, {Component, PropTypes} from 'react';
 
-
-
-const PopUpPet = React.createClass({
+class PopUpPet extends React.Component{
   render() {
     return (
         <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
@@ -40,8 +39,11 @@ const PopUpPet = React.createClass({
         </Modal>
       );
   }
-});
+}
 
-
+PopUpPet.propTypes = {
+  pet: React.PropTypes.object,
+  onHide: React.PropTypes.func
+};
 
 export default PopUpPet;

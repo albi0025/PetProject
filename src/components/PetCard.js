@@ -37,6 +37,8 @@ class PetCard extends React.Component {
   );}
 }
 
-
+PetCard.propTypes = {
+  pet: React.PropTypes.object
+};
 
 export default PetCard;

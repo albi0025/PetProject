@@ -6,6 +6,8 @@ import open from 'open';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import uriUtil from 'mongodb-uri';
+import morgan from 'morgan';
+import configAuth from './configAuth';
 /* eslint-disable no-console */
 
 const port = 3000;
@@ -16,6 +18,8 @@ const router = express.Router();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
+// use morgan to log requests to the console
+app.use(morgan('dev'));
 
 //MongoDB -- Mongoose Import - Start
 
@@ -28,8 +32,10 @@ let options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
 mongoose.connect(mongooseUri, options);
+const User = require('../models/user');
 const Pet = require('../models/pet');
 const petRoutes = require('../routes/petRoutes');
+const userRoutes = require('../routes/userRoutes');
 //End
 
 //Timed scrape and sync
@@ -40,7 +46,7 @@ let url = "http://ws.petango.com/Webservices/adoptablesearch/" +
   "wsAdoptableAnimals.aspx?sex=All&agegroup=All&colnum=" +
   "1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
 //Call it when you npm start
-scrapeAndSync();
+// scrapeAndSync();
 //Call again every hour
 setInterval(scrapeAndSync, 3600000);
 
@@ -58,37 +64,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }));
 
-app.use(require('webpack-hot-middleware')(compiler));
-
 app.use('/', petRoutes);
 
-app.post('/petsdata',function(req,res){
-
-  let pets = new Pet({
-    url: req.body.url,
-    animalId: req.body.animalId,
-    name: req.body.name,
-    mainPhoto: req.body.mainPhoto,
-    species: req.body.species,
-    breed: req.body.breed,
-    age: req.body.age,
-    gender: req.body.gender,
-    size: req.body.size,
-    color: req.body.color,
-    spayNeuter: req.body.spayNeuter,
-    declawed: req.body.declawed,
-    intakeDate: req.body.intakeDate,
-    description: req.body.description
-
-  });
-
-
-  pets.save(function(err, pets, next){
-    if (err) throw err;
-    res.json(pets);
-  });
-
-});
+app.use('/user', userRoutes);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/public/index.html'));
