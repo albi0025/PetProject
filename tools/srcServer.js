@@ -50,7 +50,6 @@ function scrapeAndSync() {
     console.log(arr);
   });
 }
-//End////////////////////////////////////////
 
 app.use(express.static('src/public'));
 
@@ -60,7 +59,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-//---------------------------------------------------------------
+
 app.use('/', petRoutes);
 
 app.post('/petsdata',function(req,res){
@@ -90,7 +89,6 @@ app.post('/petsdata',function(req,res){
   });
 
 });
-//------------------------------------------------------------------
 
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/public/index.html'));
