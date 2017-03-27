@@ -10,8 +10,6 @@ import '../public/style.css';
 
 const PopUpPet = React.createClass({
   render() {
-
-
     return (
         <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
           <Modal.Header closeButton>

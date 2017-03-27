@@ -23,12 +23,21 @@
   margin: 0%;
   padding: 0%;
 }
+
+.container{
+  overflow: hidden;
+  background-size: cover;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+
 .header {
   -webkit-transition: transform .5s ease-in-out;
   background: linear-gradient(
   rgba(20,20,20, .5),
-  rgba(20,20,20, .6)), url(/images/logo3.png) no-repeat, url(/images/dogsrunning.jpg);
-  background-size: cover, 23vw 16vh;
+  rgba(20,20,20, .6)), url(/images/petlogo2.png) no-repeat, url(/images/dogsrunning.jpg);
+  background-size: cover, 23vw;
   background-position: center;
   position: relative;
   width: 100vw;
@@ -53,8 +62,50 @@
 }
 
 .words {
- line-height: 70vh;
+  line-height: 70vh;
+}
 
+.homediv1 {
+  display:block;
+  margin: 3%;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  -webkit-transition: transform .5s ease-in-out;
+}
+
+.homediv1 img {
+  -moz-transition: all 1.4s;
+  -webkit-transition: all 1.4s;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+.homediv1:hover img {
+  -moz-transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.homediv2 {
+  display:block;
+  margin: 3%;
+  background-color: #f2f2f2;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  -webkit-transition: transform .5s ease-in-out;
+}
+
+.homediv2 img {
+  -moz-transition: all 1.4s;
+  -webkit-transition: all 1.4s;
+  -webkit-transition: all .5s ease-in-out;
+}
+
+.homediv2:hover img {
+  -moz-transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 .outterhomediv {
@@ -110,7 +161,6 @@
 .pet-card {
   background-color: #f2f2f2;
 }
-
 
 .thumbnail.pet-card img {
    width: 100%;
@@ -177,15 +227,10 @@
   font-family: 'Raleway', sans-serif;
  }
 
-
-
 #image-gallery-image {
     max-width: 250px;
     max-height: 250px;
     border-radius: 1000px;
-
-
-
 }
 
 #card-text {
@@ -193,6 +238,4 @@
   font-weight: bold;
   font-size: 16px;
   text-align: justify;
-
-
 }
