@@ -15,25 +15,23 @@ const PopUpPet = React.createClass({
     return (
         <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">Pet Description</Modal.Title>
+            <Modal.Title id="contained-modal-title-lg card-text">{this.props.pet.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
 
+          <img id="image-gallery-image" class="img-responsive"
+          src={this.props.pet.mainPhoto}/>
 
-            <h2>{this.props.pet.name}</h2>
-
-            <p>{this.props.pet.species}</p>
-            <p>{this.props.pet.breed}</p>
-            <p>{this.props.pet.age}</p>
-            <p>{this.props.pet.gender}</p>
-            <p>{this.props.pet.size}</p>
-            <p>{this.props.pet.color}</p>
-            <p>{this.props.pet.spayNeuter}</p>
-            <p>{this.props.pet.declawed}</p>
-            <p>{this.props.pet.intakeDate}</p>
-            <p>{this.props.pet.description}</p>
-
-
+            <p id="card-text">Species: {this.props.pet.species}</p>
+            <p id="card-text">Breed: {this.props.pet.breed}</p>
+            <p id="card-text">Age: {this.props.pet.age}</p>
+            <p id="card-text">Gender: {this.props.pet.gender}</p>
+            <p id="card-text">Size: {this.props.pet.size}</p>
+            <p id="card-text">Color: {this.props.pet.color}</p>
+            <p id="card-text">Spayed or Neutered: {this.props.pet.spayNeuter}</p>
+            <p id="card-text">Declawed: {this.props.pet.declawed}</p>
+            <p id="card-text">Intake Date: {this.props.pet.intakeDate}</p>
+            <p id="card-text">Description: </p><p>{this.props.pet.description}</p>
 
 
           </Modal.Body>
