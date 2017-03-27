@@ -26,14 +26,6 @@ export default class Home extends React.Component {
            </Col>
           </Row>
         </Grid>
-        <Grid>
-          <Row>
-            <div>
-              <h1>Sponsorship</h1>
-              <p></p>
-            </div>
-          </Row>
-        </Grid>
       </div>
     );
   }
