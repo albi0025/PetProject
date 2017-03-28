@@ -9,7 +9,7 @@ export default class Home extends React.Component {
       <div>
         <div className="container">
           <div className="header">
-            <h1 className="words">Welcome to Pet Project</h1>
+            <h1 className="words">Welcome to The</h1>
           </div>
         </div>
         <Grid>

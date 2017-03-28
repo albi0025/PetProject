@@ -10,14 +10,14 @@ export default class Navigation extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Pet Projects</a>
+              <a href="#" className="navbar-left"><img className="img-responsive" src="/images/navLogo.png"/></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-              <NavItem eventKey={1} href="./DisplayPets">Dogs</NavItem>
-              <NavItem eventKey={2} href="#">Cats</NavItem>
+              <NavItem eventKey={1} href="/">Dogs</NavItem>
+              <NavItem eventKey={2} href="/">Cats</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
