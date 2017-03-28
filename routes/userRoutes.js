@@ -20,7 +20,7 @@ app.set('superSecret', configAuth.secret);
 userRoutes.post('/newUser', function(req, res) {
   let user = new User();
   user.name = req.body.name;
-  user.password = req.body.password;
+  user.password = hash.generate(req.body.password);
 
   user.save(function(err, user){
     if(err){
@@ -45,10 +45,13 @@ userRoutes.post('/authenticate', function(req, res) {
     } else if (user) {
 
       // check if password matches
-      if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-      } else {
+      if (!hash.verify(req.body.password, user.password)) {
+        res.json({
+          success: false,
+          message: 'Authentication failed. Wrong password.'
+        });
 
+      } else {
         // if user is found and password is right
         // create a token
         let token = jwt.sign(user, app.get('superSecret'), {
