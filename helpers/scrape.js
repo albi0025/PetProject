@@ -7,8 +7,10 @@ let scraper = {};
 
 
 scraper.scrapePetango = function(url, callback) {
+  console.log("scrape petango")
   //Make a GET request
   request(url, function (error, response, body) {
+    console.log("scrape petango request")
     //Parse the response and return an array of Urls to the animals
     let animalUrls = this.parseAnimalListResponse(body);
     //Make a GET request to each individual url
