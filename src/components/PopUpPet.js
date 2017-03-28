@@ -1,4 +1,3 @@
-// import React from 'react';
 import mongoose from 'mongoose';
 import ReactDOM from 'react-dom';
 import { Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
