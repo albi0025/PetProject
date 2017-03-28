@@ -22,7 +22,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 //MongoDB -- Mongoose Import - Start
-
 mongoose.Promise = global.Promise;
 
 let mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/petsdata';
@@ -62,6 +61,12 @@ app.use(express.static('src/public'));
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler, {
+  log: console.log,
+  path: '/__webpack_hmr',
+  heartbeat: 10 * 1000
 }));
 
 app.use('/', petRoutes);
