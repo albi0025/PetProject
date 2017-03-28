@@ -14,4 +14,6 @@ render((
       <Route path="/DisplayPets" component={DisplayPets}/>
     </Route>
   </Router>
-), document.getElementById('app'));
+),
+
+document.getElementById('app'));
