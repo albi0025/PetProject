@@ -16,10 +16,10 @@ export default class Navigation extends React.Component {
           </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-              <NavItem eventKey={1} href="/">Dogs</NavItem>
-              <NavItem eventKey={2} href="/">Cats</NavItem>
-            </Nav>
-          </Navbar.Collapse>
+                <NavItem eventKey={1} href="/">Dogs</NavItem>
+                <NavItem eventKey={2} href="/">Cats</NavItem>
+              </Nav>
+            </Navbar.Collapse>
         </Navbar>
       </div>
     );

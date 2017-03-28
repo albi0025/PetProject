@@ -10,16 +10,16 @@ import React, {Component, PropTypes} from 'react';
 class PopUpPet extends React.Component{
   render() {
     return (
-        <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg card-text">{this.props.pet.name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg card-text">{this.props.pet.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Col xs={12} md={8} lg={4}>
-          <img id="image-gallery-image" className="img-responsive"
-          src={this.props.pet.mainPhoto}/>
+            <img id="image-gallery-image" className="img-responsive"
+            src={this.props.pet.mainPhoto}/>
           </Col>
-        <Col xs={12} md={8} lg={8}>
+          <Col xs={12} md={8} lg={8}>
             <p id="card-text">Animal ID: {this.props.pet.animalId}</p>
             <p id="card-text">Breed: {this.props.pet.breed}</p>
             <p id="card-text">Age: {this.props.pet.age}</p>
@@ -30,14 +30,13 @@ class PopUpPet extends React.Component{
             <p id="card-text">Declawed: {this.props.pet.declawed}</p>
             <p id="card-text">Intake Date: {this.props.pet.intakeDate}</p>
             <p id="card-text">Description: </p><p>{this.props.pet.description}</p>
-            </Col>
-
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      );
+          </Col>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 }
 
