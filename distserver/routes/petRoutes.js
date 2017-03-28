@@ -1,11 +1,24 @@
-import React from 'react';
-import webpack from 'webpack';
-const Pet = require ('../models/pet');
-let express = require('express');
-let router = express.Router();
+'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-router.use(function(req, res, next){
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _webpack = require('webpack');
+
+var _webpack2 = _interopRequireDefault(_webpack);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Pet = require('../models/pet');
+var express = require('express');
+var router = express.Router();
+
+router.use(function (req, res, next) {
   console.log('something is happening!');
   res.setHeader('Content-Type', 'application/json');
   next();
@@ -41,15 +54,14 @@ router.route('/petsdata')
 //   });
 // })
 //
-.get( function(req, res, next){
-  Pet.find(function(err, pets){
-    if(err){
+.get(function (req, res, next) {
+  Pet.find(function (err, pets) {
+    if (err) {
       next(err);
-
     } else {
       res.json(pets);
     }
   });
 });
 
-export default router;
+exports.default = router;

@@ -1,29 +1,54 @@
-import React from 'react';
-import webpack from 'webpack';
-import hash from 'password-hash';
-import User from '../models/user';
-import jwt from 'jsonwebtoken';
-import configAuth from '../tools/configAuth';
+'use strict';
 
-let express = require('express');
-let userRoutes = express.Router();
-let app = express();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-userRoutes.use(function(req, res, next){
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _webpack = require('webpack');
+
+var _webpack2 = _interopRequireDefault(_webpack);
+
+var _passwordHash = require('password-hash');
+
+var _passwordHash2 = _interopRequireDefault(_passwordHash);
+
+var _user = require('../models/user');
+
+var _user2 = _interopRequireDefault(_user);
+
+var _jsonwebtoken = require('jsonwebtoken');
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _configAuth = require('../tools/configAuth');
+
+var _configAuth2 = _interopRequireDefault(_configAuth);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var express = require('express');
+var userRoutes = express.Router();
+var app = express();
+
+userRoutes.use(function (req, res, next) {
   console.log('User Routes Activity...');
   res.setHeader('Content-Type', 'application/json');
   next();
 });
 
-app.set('superSecret', configAuth.secret);
+app.set('superSecret', _configAuth2.default.secret);
 
-userRoutes.post('/newUser', function(req, res) {
-  let user = new User();
+userRoutes.post('/newUser', function (req, res) {
+  var user = new _user2.default();
   user.name = req.body.name;
-  user.password = hash.generate(req.body.password);
+  user.password = _passwordHash2.default.generate(req.body.password);
 
-  user.save(function(err, user){
-    if(err){
+  user.save(function (err, user) {
+    if (err) {
       res.send(err);
     } else {
       res.json(user);
@@ -32,11 +57,11 @@ userRoutes.post('/newUser', function(req, res) {
 });
 
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
-userRoutes.post('/authenticate', function(req, res) {
+userRoutes.post('/authenticate', function (req, res) {
   // find the user
-  User.findOne({
+  _user2.default.findOne({
     name: req.body.name
-  }, function(err, user) {
+  }, function (err, user) {
 
     if (err) throw err;
 
@@ -45,16 +70,15 @@ userRoutes.post('/authenticate', function(req, res) {
     } else if (user) {
 
       // check if password matches
-      if (!hash.verify(req.body.password, user.password)) {
+      if (!_passwordHash2.default.verify(req.body.password, user.password)) {
         res.json({
           success: false,
           message: 'Authentication failed. Wrong password.'
         });
-
       } else {
         // if user is found and password is right
         // create a token
-        let token = jwt.sign(user, app.get('superSecret'), {
+        var token = _jsonwebtoken2.default.sign(user, app.get('superSecret'), {
           expiresIn: 1440 // expires in 24 hours
         });
 
@@ -65,22 +89,20 @@ userRoutes.post('/authenticate', function(req, res) {
           token: token
         });
       }
-
     }
-
   });
 });
 //---------Start middleware--------------------
 
 // route middleware to verify a token
-userRoutes.use(function(req, res, next) {
+userRoutes.use(function (req, res, next) {
 
   // check header or url parameters or post parameters for token
-  let token = req.body.token || req.query.token || req.headers['x-access-token'];
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
   // decode token
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    _jsonwebtoken2.default.verify(token, app.get('superSecret'), function (err, decoded) {
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
@@ -96,19 +118,16 @@ userRoutes.use(function(req, res, next) {
       success: false,
       message: 'No token provided.'
     });
-
   }
 });
 
 //---------End middleware--------------------
 
 // route to return all users (GET http://localhost:3000/user/users)
-userRoutes.get('/users', function(req, res) {
-  User.find({}, function(err, users) {
+userRoutes.get('/users', function (req, res) {
+  _user2.default.find({}, function (err, users) {
     res.json(users);
   });
 });
 
-
-
-export default userRoutes;
+exports.default = userRoutes;
