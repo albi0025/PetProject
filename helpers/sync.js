@@ -4,6 +4,7 @@ let Pet = require('../models/pet');
 let sync = {};
 
 sync.syncPets = function(arr) {
+  console.log("we are syncing");
   let scrapedAnimalIds = arr.map(function(pet) {
     return pet.animalId;
   });
