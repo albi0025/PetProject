@@ -22,7 +22,6 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 //MongoDB -- Mongoose Import - Start
-
 mongoose.Promise = global.Promise;
 
 let mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/petsdata';

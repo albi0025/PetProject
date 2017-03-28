@@ -15,7 +15,9 @@ userRoutes.use(function(req, res, next){
   next();
 });
 
-userRoutes.post('/user', function(req, res) {
+app.set('superSecret', configAuth.secret);
+
+userRoutes.post('/newUser', function(req, res) {
   let user = new User();
   user.name = req.body.name;
   user.password = req.body.password;
@@ -29,10 +31,8 @@ userRoutes.post('/user', function(req, res) {
   });
 });
 
-app.set('superSecret', configAuth.secret);
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 userRoutes.post('/authenticate', function(req, res) {
-
   // find the user
   User.findOne({
     name: req.body.name
@@ -67,7 +67,44 @@ userRoutes.post('/authenticate', function(req, res) {
 
   });
 });
+//---------Start middleware--------------------
 
+// route middleware to verify a token
+userRoutes.use(function(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  let token = req.body.token || req.query.token || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+      success: false,
+      message: 'No token provided.'
+    });
+
+  }
+});
+
+//---------End middleware--------------------
+
+// route to return all users (GET http://localhost:3000/user/users)
+userRoutes.get('/users', function(req, res) {
+  User.find({}, function(err, users) {
+    res.json(users);
+  });
+});
 
 
 
