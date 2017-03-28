@@ -5,6 +5,7 @@ import React from 'react';
 import Home from './components/Home';
 import DisplayPets from './components/DisplayPets';
 import App from './components/App';
+import Login from './components/Login';
 
 render((
   <Router history={hashHistory}>
