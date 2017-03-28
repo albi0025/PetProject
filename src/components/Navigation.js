@@ -1,10 +1,19 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
-import { Navbar, NavItem, Nav, Col, MenuItem, NavDropdown } from 'react-bootstrap';
+import NavModal from './NavModal';
+import { Navbar, NavItem, Nav, Col, MenuItem, NavDropdown, ButtonToolbar, Button} from 'react-bootstrap';
+
 
 export default class Navigation extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      lgShow: false
+    };
+  }
 
   render() {
+    let lgClose = () => this.setState({ lgShow: false });
     return(
       <div className="Navbar">
         <Navbar inverse collapseOnSelect>
@@ -16,9 +25,19 @@ export default class Navigation extends React.Component {
           </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-              <NavItem eventKey={1} href="/">Dogs</NavItem>
-              <NavItem eventKey={2} href="/">Cats</NavItem>
-            </Nav>
+                <NavItem eventKey={1} href="/">Dogs</NavItem>
+                <NavItem eventKey={2} href="/">Cats</NavItem>
+                <NavItem eventKey={3}>
+                  <ButtonToolbar>
+                    <Button bsStyle="primary" onClick={()=>{
+                      this.setState({ lgShow: true });
+                    }}>
+                      Login/Register
+                    </Button>
+                    <NavModal show={this.state.lgShow} onHide={lgClose} />
+                  </ButtonToolbar>
+                </NavItem>
+              </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>

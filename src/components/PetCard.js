@@ -22,16 +22,13 @@ class PetCard extends React.Component {
           <h2>{this.props.pet.name}</h2>
           <p>Sponsor Me!</p>
           <ButtonToolbar>
-
             <Button key={this.props.pet.animalId} bsStyle="primary" onClick={()=>{
               this.setState({ lgShow: true });
-              console.log("button clicked!");
             }}>
               Pet Info
             </Button>
-
-                <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
-              </ButtonToolbar>
+            <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
+          </ButtonToolbar>
         </Thumbnail>
     </div>
   );}
