@@ -4,7 +4,6 @@ let Pet = require('../models/pet');
 let sync = {};
 
 sync.syncPets = function(arr) {
-  console.log("we are syncing");
   let scrapedAnimalIds = arr.map(function(pet) {
     return pet.animalId;
   });
@@ -37,7 +36,6 @@ sync.saveNewPets = function(pet) {
 //look up a the pet object by animalId in the database and delete it from
 //the database
 sync.removeAdoptedPets = function(pet) {
-  console.log(pet.animalId)
   Pet.remove({animalId: pet.animalId }, function(err) {
     console.log(pet.name + " was adopted! :)")
   });
