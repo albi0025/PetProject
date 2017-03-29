@@ -47,7 +47,8 @@ var loki = { animalId: 34680077,
   spayNeuter: true,
   declawed: 'No',
   intakeDate: '2/17/2017',
-  description: 'Woof'
+  description: 'Woof',
+  adopted: false
 };
 
 var loretta = { animalId: 33927386,
