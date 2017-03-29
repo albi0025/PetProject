@@ -1,6 +1,8 @@
-let mongoose = require("mongoose");
+"use strict";
 
-let PetSchema = new mongoose.Schema({
+var mongoose = require("mongoose");
+
+var PetSchema = new mongoose.Schema({
   url: String,
   animalId: Number,
   name: String,

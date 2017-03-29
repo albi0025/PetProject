@@ -7,11 +7,11 @@
 
 .navbar-brand {
   position: absolute;
-  overflow: hidden;
+  /*overflow: hidden;*/
   max-height: 200px;
   max-width: 400px;
-  padding-top: 0;
-  padding-bottom: 1vh;
+  padding-top: 1vh;
+  padding-bottom: 0;
 }
 
 .Navbar {
@@ -21,6 +21,27 @@
   margin-top: 0px;
   padding-top: 0px;
   font-family: 'Raleway', sans-serif;
+}
+
+.navButton {
+  background-color: white;
+  color: black;
+}
+
+.navButton:hover {
+  background-color: black;
+}
+
+Button:active {
+  background-color: white;
+}
+
+Button:focus {
+  background-color: white;
+}
+
+.navLinks {
+  margin-top: 1vh;
 }
 
 .container{
@@ -141,18 +162,18 @@
 }*/
 
 .thumbnail.pet-card {
-   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
-   margin: 0 2px 15px;
-   -webkit-column-break-inside: avoid;
-   -moz-column-break-inside: avoid;
-   column-break-inside: avoid;
-   padding: 15px;
-   padding-bottom: 5px;
-   width: 230px;
-   -webkit-transition: all .2s ease;
-   -moz-transition: all .2s ease;
-   -o-transition: all .2s ease;
-   transition: all .2s ease;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  margin: 0 2px 15px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  padding: 15px;
+  padding-bottom: 5px;
+  width: 230px;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 .pet-card {
@@ -160,7 +181,7 @@
 }
 
 .thumbnail.pet-card img {
-   width: 100%;
+  width: 100%;
 }
 
 #wrapper {
@@ -225,9 +246,8 @@
  }
 
 #image-gallery-image {
-    max-width: 250px;
-    max-height: 250px;
-    border-radius: 1000px;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 #card-text {

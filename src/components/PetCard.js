@@ -13,9 +13,7 @@ class PetCard extends React.Component {
   }
 
   render() {
-
     let lgClose = () => this.setState({ lgShow: false });
-
     return(
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
@@ -30,8 +28,9 @@ class PetCard extends React.Component {
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
         </Thumbnail>
-    </div>
-  );}
+      </div>
+    );
+  }
 }
 
 PetCard.propTypes = {

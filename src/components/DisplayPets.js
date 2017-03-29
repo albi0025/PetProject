@@ -24,8 +24,7 @@ export default class DisplayPets extends React.Component {
   loadPetsFromDb() {
     fetch('/petsdata')
     .then(result => result.json())
-    .then(data => this.setState({
-      petPics: data}));
+    .then(data => this.setState({petPics: data}));
   }
     //create a new array that is a filtered version of this.state.petPics
     //example: if this.state.species === dog than the resulting array will only have dogs
