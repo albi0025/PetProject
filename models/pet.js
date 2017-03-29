@@ -14,7 +14,8 @@ let PetSchema = new mongoose.Schema({
   spayNeuter: String,
   declawed: String,
   intakeDate: String,
-  description: String
+  description: String,
+  adopted: { type: Boolean, default: false }
 });
 
 module.exports = mongoose.model('Pet', PetSchema);
