@@ -29,7 +29,7 @@ export default class Navigation extends React.Component {
                 <NavItem eventKey={2} href="/">Cats</NavItem>
                 <NavItem eventKey={3}>
                   <ButtonToolbar>
-                    <Button bsStyle="primary" onClick={()=>{
+                    <Button className="navButton" bsStyle="primary" onClick={()=>{
                       this.setState({ lgShow: true });
                     }}>
                       Login/Register
