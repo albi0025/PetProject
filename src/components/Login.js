@@ -9,11 +9,14 @@ class Login extends React.Component{
     super();
     this.state = {
       name: "",
-      password: ""
+      password: "",
+      token: "",
+      loggedIn: false
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
+    this.authenticateUser = this.authenticateUser.bind(this);
+    this.loginHandler = this.loginHandler.bind(this);
   }
 
   handleNameChange(e) {
@@ -24,23 +27,45 @@ class Login extends React.Component{
     this.setState({password: e.target.value});
   }
 
-  // authenticateUser(user) {
-  //   fetch("/user/authenticate",{
-  //     method:"POST",
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       name: user.name,
-  //       password: user.password
-  //     })
-  //   });
-  // }
+  authenticateUser(user) {
+    fetch("/user/authenticate",{
+      method:"POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        password: this.state.password
+      })
+    })
+    .then(result => result.json())
+    .then(res => {
+      if(res.token) {
+        this.token = res.token;
+        this.name = res.name;
+        this.loggedIn = true;
+      }
+      else {
+        this.loggedIn = false;
+      }
+    });
+    console.log(this.state.token);
+  }
 
+  loginHandler(e){
+    e.preventDefault();
+    this.authenticateUser();
+    this.setState({loggedIn: true});
+  }
 
 
   render() {
+    if(this.state.loggedIn){
+      return(
+        <h1>{this.state.name} is logged in!</h1>
+      );
+    }
     return (
       <div>
         <form>
@@ -52,8 +77,7 @@ class Login extends React.Component{
           <p>Password:</p>
           <input onChange={this.handlePasswordChange} type="text" name="password" value={this.state.password}/>
           <br/>
-          <button type="submit">Submit</button>
-
+          <button onClick={this.loginHandler} type="submit">Submit</button>
         </form>
       </div>
     );

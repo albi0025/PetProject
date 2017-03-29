@@ -49,8 +49,17 @@ class Register extends React.Component{
   }
 
 
-
   render() {
+    if(this.state.registered) {
+      return(
+        <div>
+          <br/>
+          <br/>
+          <br/>
+          <h1>Welcome {this.state.name}</h1>
+        </div>
+      );
+    }
     return (
       <div>
         <form>
