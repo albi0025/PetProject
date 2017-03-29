@@ -7,11 +7,11 @@
 
 .navbar-brand {
   position: absolute;
-  overflow: hidden;
+  /*overflow: hidden;*/
   max-height: 200px;
   max-width: 400px;
-  padding-top: 0;
-  padding-bottom: 1vh;
+  padding-top: 1vh;
+  padding-bottom: 0;
 }
 
 .Navbar {
@@ -26,11 +26,22 @@
 .navButton {
   background-color: white;
   color: black;
-  border-color: white;
 }
 
 .navButton:hover {
   background-color: black;
+}
+
+Button:active {
+  background-color: white;
+}
+
+Button:focus {
+  background-color: white;
+}
+
+.navLinks {
+  margin-top: 1vh;
 }
 
 .container{
