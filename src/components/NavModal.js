@@ -11,21 +11,21 @@ class NavModal extends React.Component{
 
   render() {
     return (
-        <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg card-text">Login or Register</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-              <Tabs defaultActiveKey={1} animation={false} id="noanim-tab-example">
-                <Tab eventKey={1} title="Login"><Login/></Tab>
-                <Tab eventKey={2} title="Register"><Register/></Tab>
-              </Tabs>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      );
+      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg card-text">Login or Register</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Tabs defaultActiveKey={1} animation={false} id="noanim-tab-example">
+            <Tab eventKey={1} title="Login"><Login/></Tab>
+            <Tab eventKey={2} title="Register"><Register/></Tab>
+          </Tabs>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 }
 
