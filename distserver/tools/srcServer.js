@@ -92,7 +92,8 @@ var syncRunner = require('../helpers/sync');
 //
 var url = "http://ws.petango.com/Webservices/adoptablesearch/" + "wsAdoptableAnimals.aspx?sex=All&agegroup=All&colnum=" + "1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
 //Call it when you npm start
-// scrapeAndSync();
+console.log("about to call scrapeAndSync");
+scrapeAndSync();
 //Call again every hour
 setInterval(scrapeAndSync, 3600000);
 

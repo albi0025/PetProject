@@ -8,6 +8,7 @@ var sync = {};
 sync.syncPets = function (arr) {
   var _this = this;
 
+  console.log("we are syncing");
   var scrapedAnimalIds = arr.map(function (pet) {
     return pet.animalId;
   });
