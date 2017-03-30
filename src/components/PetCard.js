@@ -1,7 +1,7 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
 import PopUpPet from './PopUpPet';
-import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid, Glyphicon, ProgressBar } from 'react-bootstrap';
 
 
 class PetCard extends React.Component {
@@ -55,7 +55,7 @@ class PetCard extends React.Component {
               Pet Info
             </Button>
             <Button onClick={this.heartPet} key={this.props.pet.name} bsStyle="primary">
-              Heart Icon
+              <Glyphicon glyph="heart" />
             </Button>
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
