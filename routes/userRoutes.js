@@ -48,7 +48,6 @@ userRoutes.post('/authenticate', function(req, res) {
       // check if password matches
       if (!hash.verify(req.body.password, user.password)) {
         res.json({
-          success: false,
           message: 'Authentication failed. Wrong password.'
         });
 
@@ -61,8 +60,6 @@ userRoutes.post('/authenticate', function(req, res) {
 
         // return the information including token as JSON
         res.json({
-          success: true,
-          message: 'Enjoy your token!',
           token: token
         });
       }
@@ -75,9 +72,9 @@ userRoutes.post('/authenticate', function(req, res) {
 
 // route middleware to verify a token
 userRoutes.use(function(req, res, next) {
-
   // check header or url parameters or post parameters for token
-  let token = req.body.token || req.query.token || req.headers['x-access-token'];
+  let token = req.headers.authorization.replace("Bearer ", "");
+  console.log(token)
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -104,10 +101,9 @@ userRoutes.use(function(req, res, next) {
 //---------End middleware--------------------
 
 // route to return all users (GET http://localhost:3000/user/users)
-userRoutes.get('/users', function(req, res) {
-  User.find({}, function(err, users) {
-    res.json(users);
-  });
+userRoutes.post('/pets', function(req, res) {
+  //When this end point is completed it will save a pet to favorites
+  console.log(req.decoded)
 });
 
 
