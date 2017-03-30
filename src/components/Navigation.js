@@ -9,16 +9,16 @@ export default class Navigation extends React.Component {
   constructor() {
     super();
     this.state = {
-      lgShow: false
+      lgShow: false,
+      loggedOut: false
     };
     this.logout = this.logout.bind(this);
   }
 
   logout(e) {
-    let cookie = document.cookie.split(";");
-    let eqPos = cookie.indexOf("=");
-    let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "token=";
+    this.setState({loggedOut: true});
+    console.log(this.state.loggedOut)
   }
 
   render() {
@@ -34,11 +34,11 @@ export default class Navigation extends React.Component {
           </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-                <NavItem className="navLinks" eventKey={1} href="/">
-                  <Link to={{ pathname: '/DisplayPets', query: { species: 'dog' } }}>Dogs</Link>
+                <NavItem className="navLinks" eventKey={1} href="/DogDisplay">
+                  <Link to={{ pathname: '/DogDisplay' }}>Dogs</Link>
                 </NavItem>
-                <NavItem className="navLinks" eventKey={2} href="/">
-                  <Link to={{ pathname: '/DisplayPets', query: { species: 'cat' } }}>Cats</Link>
+                <NavItem className="navLinks" eventKey={2} href="/CatDisplay">
+                  <Link to={{ pathname: '/CatDisplay' }}>Cats</Link>
                 </NavItem>
                 <NavItem className="navLinks" eventKey={3} href="/">
                   <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button>

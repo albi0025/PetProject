@@ -1,6 +1,8 @@
 //You scrape petango and you get one pet object back.
 //You want to look that pet up in your database by animalId.
-let Pet = require('../models/pet');
+// let Pet = require('../models/pet');
+import Pet from '../models/pet';
+
 let sync = {};
 
 sync.syncPets = function(arr) {

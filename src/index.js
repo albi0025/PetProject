@@ -6,12 +6,15 @@ import Home from './components/Home';
 import DisplayPets from './components/DisplayPets';
 import App from './components/App';
 import Login from './components/Login';
+import CatDisplay from './components/CatDisplay';
+import DogDisplay from './components/DogDisplay';
 
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="/DisplayPets" component={DisplayPets}/>
+      <Route path="/CatDisplay" component={CatDisplay}/>
+      <Route path="/DogDisplay" component={DogDisplay}/>
     </Route>
   </Router>
 ),
