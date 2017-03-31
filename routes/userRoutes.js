@@ -72,7 +72,7 @@ userRoutes.post('/authenticate', function(req, res) {
 // route middleware to verify a token
 userRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
-  let token = req.headers.authorization.replace("Bearer ", "");
+  let token = req.headers.authorization.replace("Bearer", "").trim();
   // decode token
   if (token) {
     // verifies secret and checks exp

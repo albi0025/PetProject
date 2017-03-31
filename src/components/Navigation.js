@@ -75,7 +75,7 @@ export default class Navigation extends React.Component {
                   {
                     this.state.loggedIn ?
                       <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button> :
-                      <Button className="navButton" bsStyle="primary" onClick={function() {
+                      <Button className="navButton" bsStyle="primary" onClick={()=> {
                         this.setState({ lgShow: true });
                       }}>
                         Login/Register
