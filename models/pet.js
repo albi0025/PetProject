@@ -1,4 +1,4 @@
-let mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 let PetSchema = new mongoose.Schema({
   url: String,
@@ -18,4 +18,4 @@ let PetSchema = new mongoose.Schema({
   adopted: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model('Pet', PetSchema);
+export default mongoose.model('Pet', PetSchema);

@@ -1,7 +1,7 @@
 import React from 'react';
 import webpack from 'webpack';
-const Pet = require ('../models/pet');
-let express = require('express');
+import Pet from '../models/pet';
+import express from 'express';
 let router = express.Router();
 
 

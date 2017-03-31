@@ -45,4 +45,4 @@ sync.adoptedTrue = function(pet) {
 
 
 
-module.exports = sync;
+export default sync;

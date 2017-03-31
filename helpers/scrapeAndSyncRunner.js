@@ -1,5 +1,5 @@
-let mongoose = require("mongoose");
-let uriUtil = require('mongodb-uri');
+import mongoose from 'mongoose';
+import uriUtil from 'mongodb-uri';
 mongoose.Promise = global.Promise;
 let mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/petsdata';
 let mongooseUri = uriUtil.formatMongoose(mongodbUri);

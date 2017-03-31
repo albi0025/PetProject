@@ -4,8 +4,8 @@
 //Loki is not in the scrape and needs to be removed from the database.
 //Baltazaar is in both the scrape and the DB so he should stay put.
 
-let mongoose = require("mongoose");
-let uriUtil = require('mongodb-uri');
+import mongoose from 'mongoose';
+import uriUtil from 'mongodb-uri';
 mongoose.Promise = global.Promise;
 let mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/petsdata';
 let mongooseUri = uriUtil.formatMongoose(mongodbUri);
