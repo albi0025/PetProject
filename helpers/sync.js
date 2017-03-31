@@ -2,6 +2,7 @@
 //You want to look that pet up in your database by animalId.
 // let Pet = require('../models/pet');
 import Pet from '../models/pet';
+import mailSend from './mailSend';
 
 let sync = {};
 
@@ -23,7 +24,7 @@ sync.syncPets = function(arr) {
       if(doc === null) {
         this.saveNewPets(arr[i]);
       }
-      //else a dog exsited both in the scrape and the database and
+      //else a dog existed both in the scrape and the database and
       //we're ignoring it for now.
     }.bind(this));
   }
