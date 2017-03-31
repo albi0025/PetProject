@@ -10,15 +10,48 @@ export default class Navigation extends React.Component {
     super();
     this.state = {
       lgShow: false,
-      loggedOut: false
+      loggedIn: this.checkCookie()
+      //Todo set this based on the users token in the cookie
+      //Get the token cookie if the token cookie is empty then the user is not logged in if the token
+      //cookie has a value then the user is logged in.
     };
     this.logout = this.logout.bind(this);
+    this.getCookie = this.getCookie.bind(this);
+    this.checkCookie = this.checkCookie.bind(this);
   }
+
+  // conponentDidMount() {
+  //
+  // }
+
+  getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  checkCookie() {
+    let token = this.getCookie("token");
+    if (token === "") {
+      return false
+    } else {
+      return true
+    }
+  }
+
 
   logout(e) {
     document.cookie = "token=";
-    this.setState({loggedOut: true});
-    console.log(this.state.loggedOut)
   }
 
   render() {
@@ -41,15 +74,18 @@ export default class Navigation extends React.Component {
                   <Link to={{ pathname: '/CatDisplay' }}>Cats</Link>
                 </NavItem>
                 <NavItem className="navLinks" eventKey={3} href="/">
-                  <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button>
+                  {
+                    this.state.loggedIn ?
+                      <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button> :
+                      <Button className="navButton" bsStyle="primary" onClick={()=>{
+                        this.setState({ lgShow: true });
+                      }}>
+                        Login/Register
+                      </Button>
+                  }
                 </NavItem>
                 <NavItem eventKey={4}>
                   <ButtonToolbar>
-                    <Button className="navButton" bsStyle="primary" onClick={()=>{
-                      this.setState({ lgShow: true });
-                    }}>
-                      Login/Register
-                    </Button>
                     <NavModal show={this.state.lgShow} onHide={lgClose} />
                   </ButtonToolbar>
                 </NavItem>
