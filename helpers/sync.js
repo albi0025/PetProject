@@ -17,17 +17,27 @@ sync.syncPets = function(arr) {
       }
     }
   }.bind(this));
-//loop over pet objects in array
-  for(let i = 0; i < arr.length; i ++) {
+  //loop over pet objects in array
+  let self = this;
+  let promiseArray = arr.map(function(pet) {
     //look up pet in database by animalID
-    Pet.findOne({animalId:arr[i].animalId}, function (err, doc) {
+    return Pet.findOne({animalId:pet.animalId}, function (err, doc) {
       if(doc === null) {
-        this.saveNewPets(arr[i]);
+        self.saveNewPets(pet);
+        return true;
+      } else {
+        return false;
       }
       //else a dog existed both in the scrape and the database and
       //we're ignoring it for now.
     }.bind(this));
-  }
+  });
+  Promise.all(promiseArray).then(foundPets =>{
+    console.log(foundPets);
+    let newPetCount = foundPets.reduce(
+      (result, foundPet)=>foundPet ? result++ : result, 0);
+    mailSend(newPetCount );
+  });
 };
 
 sync.saveNewPets = function(pet) {
