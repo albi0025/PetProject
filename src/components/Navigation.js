@@ -11,9 +11,6 @@ export default class Navigation extends React.Component {
     this.state = {
       lgShow: false,
       loggedIn: this.checkCookie()
-      //Todo set this based on the users token in the cookie
-      //Get the token cookie if the token cookie is empty then the user is not logged in if the token
-      //cookie has a value then the user is logged in.
     };
     this.logout = this.logout.bind(this);
     this.getCookie = this.getCookie.bind(this);
