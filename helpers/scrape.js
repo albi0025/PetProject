@@ -1,8 +1,5 @@
-
-let request = require('request');
-// import request from 'request';
-let cheerio = require('cheerio');
-// import cheerio from 'cheerio';
+import request from 'request';
+import cheerio from 'cheerio';
 let scraper = {};
 
 
@@ -72,9 +69,4 @@ scraper.parseIndividualAnimalResponse = function(html) {
 };
 
 
-
-
-
-
-
-module.exports = scraper;
+export default scraper;
