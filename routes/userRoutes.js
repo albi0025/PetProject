@@ -21,6 +21,7 @@ userRoutes.post('/newUser', function(req, res) {
   user.name = req.body.name;
   user.password = hash.generate(req.body.password);
   user.email = req.body.email;
+  user.subscribed = req.body.subscribed;
 
   user.save(function(err, user){
     if(err){
