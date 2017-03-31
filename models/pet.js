@@ -18,4 +18,4 @@ let PetSchema = new mongoose.Schema({
   adopted: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model('Pet', PetSchema);
+export default mongoose.model('Pet', PetSchema);
