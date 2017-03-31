@@ -14,7 +14,6 @@ class PetCard extends React.Component {
     this.heartPet = this.heartPet.bind(this);
   }
 
-//Todo pass state down to here
   getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
