@@ -66,14 +66,21 @@ class Register extends React.Component{
           <br/>
           <br/>
           <br/>
-          <p>Name:</p>
-          <input onChange={this.handleNameChange} type="text" name="name" value={this.state.name}/>
-          <p>Email:</p>
-          <input onChange={this.handleEmailChange} type="text" name="email" value={this.state.email}/>
-          <p>Password:</p>
-          <input onChange={this.handlePasswordChange} type="text" name="password" value={this.state.password}/>
-          <p>Subscribe:</p>
-          <button onClick={this.addNewUserToDatabase} type="submit">Submit</button>
+          <input onChange={this.handleNameChange} type="text" name="name" value={this.state.name} placeholder="Name"/>
+          <br/>
+          <br/>
+          <input onChange={this.handleEmailChange} type="email" name="email" value={this.state.email} placeholder="Email Address"/>
+          <br/>
+          <br/>
+          <input onChange={this.handlePasswordChange} type="password" name="password" value={this.state.password} placeholder="Password"/>
+          <br/>
+          <br/>
+          <p>
+            <input type="checkbox" id="cbox1" value="first_checkbox"/>
+            <label>&nbsp; Be Notified As New Pets Are Added</label>
+          </p>
+          <br/>
+          <Button onClick={this.addNewUserToDatabase} type="submit">Submit</Button>
         </form>
       </div>
     );

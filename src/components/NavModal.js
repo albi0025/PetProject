@@ -11,7 +11,7 @@ class NavModal extends React.Component{
 
   render() {
     return (
-      <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
+      <Modal {...this.props} bsSize="small" aria-labelledby="contained-modal-title-sm">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg card-text">Login or Register</Modal.Title>
         </Modal.Header>
