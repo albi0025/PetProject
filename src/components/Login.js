@@ -27,7 +27,7 @@ class Login extends React.Component{
     this.setState({password: e.target.value});
   }
 
-  authenticateUser(user) {
+  authenticateUser() {
     fetch("/user/authenticate",{
       method:"POST",
       headers: {
@@ -42,20 +42,15 @@ class Login extends React.Component{
     .then(result => result.json())
     .then(res => {
       if(res.token) {
-        this.token = res.token;
-        this.name = res.name;
-        this.loggedIn = true;
-      }
-      else {
-        this.loggedIn = false;
+        document.cookie = "token=" + res.token;
       }
     });
-    console.log(this.state.token);
   }
 
   loginHandler(e){
     e.preventDefault();
     this.authenticateUser();
+    this.props.setIsLoggedInState(true);
     this.setState({loggedIn: true});
   }
 
@@ -84,6 +79,8 @@ class Login extends React.Component{
   }
 }
 
-
+Login.propTypes = {
+  setIsLoggedInState: React.PropTypes.func
+};
 
 export default Login;

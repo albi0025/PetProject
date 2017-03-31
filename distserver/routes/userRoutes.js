@@ -46,6 +46,7 @@ userRoutes.post('/newUser', function (req, res) {
   var user = new _user2.default();
   user.name = req.body.name;
   user.password = _passwordHash2.default.generate(req.body.password);
+  user.email = req.body.email;
 
   user.save(function (err, user) {
     if (err) {

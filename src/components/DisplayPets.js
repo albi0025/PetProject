@@ -11,8 +11,7 @@ export default class DisplayPets extends React.Component {
   constructor() {
     super();
     this.state = {
-      petPics: [],
-      species: window.location.hash.split("species=")[1].split("&")[0]
+      petPics: []
     };
     this.loadPetsFromDb = this.loadPetsFromDb.bind(this);
   }

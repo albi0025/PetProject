@@ -1,7 +1,7 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
 import PopUpPet from './PopUpPet';
-import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
+import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid, Glyphicon, ProgressBar } from 'react-bootstrap';
 
 
 class PetCard extends React.Component {
@@ -10,6 +10,35 @@ class PetCard extends React.Component {
     this.state = {
       lgShow: false
     };
+    this.getCookie = this.getCookie.bind(this);
+    this.heartPet = this.heartPet.bind(this);
+  }
+
+  getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  heartPet(e) {
+    fetch('user/pets', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.getCookie('token')
+      }
+    });
   }
 
   render() {
@@ -24,6 +53,9 @@ class PetCard extends React.Component {
               this.setState({ lgShow: true });
             }}>
               Pet Info
+            </Button>
+            <Button onClick={this.heartPet} key={this.props.pet.name} bsStyle="primary">
+              <Glyphicon glyph="heart" />
             </Button>
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>

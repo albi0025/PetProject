@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 class Register extends React.Component{
   constructor() {
@@ -11,7 +11,7 @@ class Register extends React.Component{
       name: "",
       email: "",
       password: "",
-      registered: false
+      registered: false,
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);

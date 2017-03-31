@@ -8,14 +8,13 @@ var sync = {};
 sync.syncPets = function (arr) {
   var _this = this;
 
-  console.log("we are syncing");
   var scrapedAnimalIds = arr.map(function (pet) {
     return pet.animalId;
   });
-  Pet.find({}, function (err, docs) {
+  Pet.find({ adopted: false }, function (err, docs) {
     for (var i = 0; i < docs.length; i++) {
       if (scrapedAnimalIds.indexOf(docs[i].animalId) === -1) {
-        this.removeAdoptedPets(docs[i]);
+        this.adoptedTrue(docs[i]);
       }
     }
   }.bind(this));
@@ -43,11 +42,9 @@ sync.saveNewPets = function (pet) {
   });
 };
 
-//look up a the pet object by animalId in the database and delete it from
-//the database
-sync.removeAdoptedPets = function (pet) {
-  console.log(pet.animalId);
-  Pet.remove({ animalId: pet.animalId }, function (err) {
+//look up a the pet object by id in the database and changes adopted to true
+sync.adoptedTrue = function (pet) {
+  Pet.update({ _id: pet.id }, { $set: { adopted: true } }, function (err) {
     console.log(pet.name + " was adopted! :)");
   });
 };
