@@ -10,7 +10,6 @@ let userRoutes = express.Router();
 let app = express();
 
 userRoutes.use(function(req, res, next){
-  console.log('User Routes Activity...');
   res.setHeader('Content-Type', 'application/json');
   next();
 });
@@ -74,7 +73,6 @@ userRoutes.post('/authenticate', function(req, res) {
 userRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
   let token = req.headers.authorization.replace("Bearer ", "");
-  console.log(token)
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -103,7 +101,6 @@ userRoutes.use(function(req, res, next) {
 // route to return all users (GET http://localhost:3000/user/users)
 userRoutes.post('/pets', function(req, res) {
   //When this end point is completed it will save a pet to favorites
-  console.log(req.decoded)
 });
 
 

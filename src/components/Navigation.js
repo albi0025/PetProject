@@ -18,11 +18,8 @@ export default class Navigation extends React.Component {
     this.logout = this.logout.bind(this);
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
+    this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
   }
-
-  // conponentDidMount() {
-  //
-  // }
 
   getCookie(cname) {
     let name = cname + "=";
@@ -43,15 +40,19 @@ export default class Navigation extends React.Component {
   checkCookie() {
     let token = this.getCookie("token");
     if (token === "") {
-      return false
+      return false;
     } else {
-      return true
+      return true;
     }
   }
 
-
   logout(e) {
     document.cookie = "token=";
+    this.setState({loggedIn: false});
+  }
+
+  setIsLoggedInState(val) {
+    this.setState({loggedIn: val});
   }
 
   render() {
@@ -77,7 +78,7 @@ export default class Navigation extends React.Component {
                   {
                     this.state.loggedIn ?
                       <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button> :
-                      <Button className="navButton" bsStyle="primary" onClick={()=>{
+                      <Button className="navButton" bsStyle="primary" onClick={function() {
                         this.setState({ lgShow: true });
                       }}>
                         Login/Register
@@ -86,7 +87,7 @@ export default class Navigation extends React.Component {
                 </NavItem>
                 <NavItem eventKey={4}>
                   <ButtonToolbar>
-                    <NavModal show={this.state.lgShow} onHide={lgClose} />
+                    <NavModal setIsLoggedInState={this.setIsLoggedInState} show={this.state.lgShow} onHide={lgClose} />
                   </ButtonToolbar>
                 </NavItem>
               </Nav>

@@ -41,11 +41,8 @@ class Login extends React.Component{
     })
     .then(result => result.json())
     .then(res => {
-      console.log(res)
       if(res.token) {
-        this.setState({loggedIn: true});
         document.cookie = "token=" + res.token;
-        console.log(document.cookie)
       }
     });
   }
@@ -53,6 +50,8 @@ class Login extends React.Component{
   loginHandler(e){
     e.preventDefault();
     this.authenticateUser();
+    this.props.setIsLoggedInState(true);
+    this.setState({loggedIn: true});
   }
 
 
@@ -80,6 +79,8 @@ class Login extends React.Component{
   }
 }
 
-
+Login.propTypes = {
+  setIsLoggedInState: React.PropTypes.func
+};
 
 export default Login;
