@@ -12,11 +12,13 @@ class Register extends React.Component{
       email: "",
       password: "",
       registered: false,
+      subscribed: false
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.addNewUserToDatabase = this. addNewUserToDatabase.bind(this);
+    this.addNewUserToDatabase = this.addNewUserToDatabase.bind(this);
+    this.handleSubscribedChange = this.handleSubscribedChange.bind(this);
   }
 
   handleNameChange(e) {
@@ -31,6 +33,10 @@ class Register extends React.Component{
     this.setState({password: e.target.value});
   }
 
+  handleSubscribedChange(e) {
+    this.setState({subscribed: true});
+  }
+
   addNewUserToDatabase(e) {
     e.preventDefault();
     fetch('/user/newUser',{
@@ -42,7 +48,8 @@ class Register extends React.Component{
       body: JSON.stringify({
         name: this.state.name,
         password: this.state.password,
-        email: this.state.email
+        email: this.state.email,
+        subscribed: this.state.subscribed
       })
     });
     this.setState({registered: true});
@@ -66,14 +73,21 @@ class Register extends React.Component{
           <br/>
           <br/>
           <br/>
-          <p>Name:</p>
-          <input onChange={this.handleNameChange} type="text" name="name" value={this.state.name}/>
-          <p>Email:</p>
-          <input onChange={this.handleEmailChange} type="text" name="email" value={this.state.email}/>
-          <p>Password:</p>
-          <input onChange={this.handlePasswordChange} type="text" name="password" value={this.state.password}/>
-          <p>Subscribe:</p>
-          <button onClick={this.addNewUserToDatabase} type="submit">Submit</button>
+          <input onChange={this.handleNameChange} type="text" name="name" value={this.state.name} placeholder="Name"/>
+          <br/>
+          <br/>
+          <input onChange={this.handleEmailChange} type="email" name="email" value={this.state.email} placeholder="Email Address"/>
+          <br/>
+          <br/>
+          <input onChange={this.handlePasswordChange} type="password" name="password" value={this.state.password} placeholder="Password"/>
+          <br/>
+          <br/>
+          <p>
+            <input onClick={this.handleSubscribedChange} type="checkbox" id="cbox1" value="first_checkbox"/>
+            <label>&nbsp; Be Notified As New Pets Are Added</label>
+          </p>
+          <br/>
+          <Button onClick={this.addNewUserToDatabase} type="submit">Submit</Button>
         </form>
       </div>
     );

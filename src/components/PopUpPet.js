@@ -15,10 +15,14 @@ class PopUpPet extends React.Component{
         </Modal.Header>
         <Modal.Body>
           <Col xs={12} md={8} lg={4}>
+          <br/>
+          <br/>
             <img id="image-gallery-image" className="img-responsive"
             src={this.props.pet.mainPhoto}/>
           </Col>
           <Col xs={12} md={8} lg={8}>
+          <br/>
+          <br/>
             <p id="card-text">Animal ID: {this.props.pet.animalId}</p>
             <p id="card-text">Breed: {this.props.pet.breed}</p>
             <p id="card-text">Age: {this.props.pet.age}</p>

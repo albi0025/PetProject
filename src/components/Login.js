@@ -8,19 +8,19 @@ class Login extends React.Component{
   constructor() {
     super();
     this.state = {
-      name: "",
+      email: "",
       password: "",
       token: "",
       loggedIn: false
     };
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.authenticateUser = this.authenticateUser.bind(this);
     this.loginHandler = this.loginHandler.bind(this);
   }
 
-  handleNameChange(e) {
-    this.setState({name: e.target.value});
+  handleEmailChange(e) {
+    this.setState({email: e.target.value});
   }
 
   handlePasswordChange(e) {
@@ -35,7 +35,7 @@ class Login extends React.Component{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: this.state.name,
+        email: this.state.email,
         password: this.state.password
       })
     })
@@ -58,7 +58,7 @@ class Login extends React.Component{
   render() {
     if(this.state.loggedIn){
       return(
-        <h1>{this.state.name} is logged in!</h1>
+        <h1>{this.state.email} is logged in!</h1>
       );
     }
     return (
@@ -67,12 +67,14 @@ class Login extends React.Component{
         <br/>
         <br/>
         <br/>
-          <p>Name:</p>
-          <input onChange={this.handleNameChange} type="text" name="name" value={this.state.name}/>
-          <p>Password:</p>
-          <input onChange={this.handlePasswordChange} type="text" name="password" value={this.state.password}/>
+        <br/>
+          <input onChange={this.handleEmailChange} type="email" name="email" value={this.state.email} placeholder="Email Address"/>
           <br/>
-          <button onClick={this.loginHandler} type="submit">Submit</button>
+          <br/>
+          <input onChange={this.handlePasswordChange} type="password" name="password" value={this.state.password} placeholder="Password"/>
+          <br/>
+          <br/>
+          <Button onClick={this.loginHandler} type="submit">Submit</Button>
         </form>
       </div>
     );

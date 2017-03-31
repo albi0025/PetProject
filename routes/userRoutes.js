@@ -21,6 +21,7 @@ userRoutes.post('/newUser', function(req, res) {
   user.name = req.body.name;
   user.password = hash.generate(req.body.password);
   user.email = req.body.email;
+  user.subscribed = req.body.subscribed;
 
   user.save(function(err, user){
     if(err){
@@ -35,7 +36,7 @@ userRoutes.post('/newUser', function(req, res) {
 userRoutes.post('/authenticate', function(req, res) {
   // find the user
   User.findOne({
-    name: req.body.name
+    email: req.body.email
   }, function(err, user) {
 
     if (err) throw err;
