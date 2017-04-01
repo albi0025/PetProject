@@ -1,10 +1,10 @@
 
-let api_key = 'key-de9859c2619f388eae8368264273ddc6';
-let domain = 'sandbox18cb3aad561f4ec7a9b13d0813af6e6f.mailgun.org';
+let api_key = 'key-8602cfc543746383ffdd2415b89cb2de';
+let domain = 'sandboxee624b132f4d406cba88159537c456e8.mailgun.org';
 let mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
-export default function petAddedEmail(newPetCount, recipients) {
-  console.log("new pet count " + newPetCount)
+export default function petAddedEmail(newPets, recipients) {
+  let newPetCount = newPets.length;
   if(newPetCount < 1) {
     return;
   }
