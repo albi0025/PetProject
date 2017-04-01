@@ -2,7 +2,8 @@
 //You want to look that pet up in your database by animalId.
 // let Pet = require('../models/pet');
 import Pet from '../models/pet';
-import mailSend from './mailSend';
+import User from '../models/user';
+import petAddedEmail from './mailSend';
 
 let sync = {};
 
@@ -17,6 +18,7 @@ sync.syncPets = function(arr) {
       }
     }
   }.bind(this));
+
   //loop over pet objects in array
   let self = this;
   let promiseArray = arr.map(function(pet) {
@@ -33,10 +35,21 @@ sync.syncPets = function(arr) {
     }.bind(this));
   });
   Promise.all(promiseArray).then(foundPets =>{
-    console.log(foundPets);
     let newPetCount = foundPets.reduce(
-      (result, foundPet)=>foundPet ? result++ : result, 0);
-    mailSend(newPetCount );
+      (result, foundPet) => {
+        foundPet ? result++ : result;
+      }, 0);
+    this.emailRecipients(newPetCount);
+    // petAddedEmail(newPetCount);
+  });
+};
+
+sync.emailRecipients = function(newPetCount) {
+  User.find({ subscribed: true }, 'email', function (err, users) {
+    let recipients = users.map(function(user) {
+      return user.email;
+    });
+    petAddedEmail(newPetCount, recipients);
   });
 };
 

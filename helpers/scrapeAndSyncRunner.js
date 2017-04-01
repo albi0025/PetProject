@@ -21,6 +21,5 @@ setInterval(scrapeAndSync, 3600000);
 function scrapeAndSync() {
   scrapeRunner.scrapePetango(url, function(arr) {
     syncRunner.syncPets(arr);
-    console.log(arr);
   });
 }

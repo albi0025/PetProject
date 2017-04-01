@@ -8,5 +8,4 @@ let url = "http://ws.petango.com/Webservices/adoptablesearch/" +
   "1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
 
 scrapeRunner.scrapePetango(url, function(arr){
-  console.log(arr);
 });
