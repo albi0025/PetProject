@@ -16,6 +16,7 @@ sync.syncPets = function(scrapedPets) {
     // scrapedPets - docs are NEW pets, not yet in the database
     // listDiff(scrapedPets, docs) === scrapedPets - docs
     let newPets = this.listDiff(scrapedPets, docs);
+    this.saveNewPets(newPets);
     this.emailRecipients(newPets);
   }.bind(this));
 
@@ -49,9 +50,9 @@ sync.emailRecipients = function(newPets) {
   });
 };
 
-sync.saveNewPets = function(pet) {
-  new Pet(pet).save(function(err, pet, next) {
-    console.log(pet.name + " was saved");
+sync.saveNewPets = function(pets) {
+  Pet.insertMany(pets, function(err, docs) {
+    console.log(docs.length + " pets were saved");
   });
 };
 
