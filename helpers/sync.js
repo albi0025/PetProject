@@ -1,6 +1,5 @@
-//You scrape petango and you get one pet object back.
+//You scrape petango and you get a pet object back.
 //You want to look that pet up in your database by animalId.
-// let Pet = require('../models/pet');
 import Pet from '../models/pet';
 import User from '../models/user';
 import petAddedEmail from './mailSend';
