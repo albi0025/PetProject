@@ -33,9 +33,9 @@ sync.syncPets = function(arr) {
     }.bind(this));
   });
   Promise.all(promiseArray).then(foundPets =>{
-    console.log(foundPets);
     let newPetCount = foundPets.reduce(
       (result, foundPet)=>foundPet ? result++ : result, 0);
+    console.log("newPetCount: " + newPetCount);
     mailSend(newPetCount );
   });
 };
