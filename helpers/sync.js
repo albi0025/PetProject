@@ -2,14 +2,26 @@
 //You want to look that pet up in your database by animalId.
 // let Pet = require('../models/pet');
 import Pet from '../models/pet';
-import mailSend from './mailSend';
+import User from '../models/user';
+import petAddedEmail from './mailSend';
 
 let sync = {};
 
-sync.syncPets = function(arr) {
-  let scrapedAnimalIds = arr.map(function(pet) {
+sync.syncPets = function(scrapedPets) {
+  let scrapedAnimalIds = scrapedPets.map(function(pet) {
     return pet.animalId;
   });
+  Pet.find({ animalId: { $in: scrapedAnimalIds } }, function(error, docs) {
+    // docs are pets from the scrape that already exist in the database
+    // scrapedPets are all animals from the scrape
+    // scrapedPets - docs are NEW pets, not yet in the database
+    // listDiff(scrapedPets, docs) === scrapedPets - docs
+    let newPets = this.listDiff(scrapedPets, docs);
+    this.saveNewPets(newPets);
+    this.emailRecipients(newPets);
+  }.bind(this));
+
+  //For unadopted pets, if they are no longer in the scrape, flag them as adopted
   Pet.find({ adopted: false }, function (err, docs){
     for(let i = 0; i < docs.length; i ++) {
       if(scrapedAnimalIds.indexOf(docs[i].animalId) === -1) {
@@ -17,32 +29,31 @@ sync.syncPets = function(arr) {
       }
     }
   }.bind(this));
-  //loop over pet objects in array
-  let self = this;
-  let promiseArray = arr.map(function(pet) {
-    //look up pet in database by animalID
-    return Pet.findOne({animalId:pet.animalId}, function (err, doc) {
-      if(doc === null) {
-        self.saveNewPets(pet);
-        return true;
-      } else {
+};
+
+sync.listDiff = function(a1, a2) {
+  return a1.filter(function(pet) {
+    for(let i = 0; i < a2.length; i ++) {
+      if(a2[i].animalId === pet.animalId) {
         return false;
       }
-      //else a dog existed both in the scrape and the database and
-      //we're ignoring it for now.
-    }.bind(this));
-  });
-  Promise.all(promiseArray).then(foundPets =>{
-    console.log(foundPets);
-    let newPetCount = foundPets.reduce(
-      (result, foundPet)=>foundPet ? result++ : result, 0);
-    mailSend(newPetCount );
+    }
+    return true;
   });
 };
 
-sync.saveNewPets = function(pet) {
-  new Pet(pet).save(function(err, pet, next) {
-    console.log(pet.name + " was saved");
+sync.emailRecipients = function(newPets) {
+  User.find({ subscribed: true }, 'email', function (err, users) {
+    let recipients = users.map(function(user) {
+      return user.email;
+    });
+    petAddedEmail(newPets, recipients);
+  });
+};
+
+sync.saveNewPets = function(pets) {
+  Pet.insertMany(pets, function(err, docs) {
+    console.log(docs.length + " pets were saved");
   });
 };
 
