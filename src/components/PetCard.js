@@ -37,7 +37,10 @@ class PetCard extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.getCookie('token')
-      }
+      },
+      body: JSON.stringify({
+        id: this.props.pet._id
+      })
     });
   }
 

@@ -82,7 +82,8 @@ userRoutes.use(function(req, res, next) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
+        // req.decoded = decoded;
+        req.currentUser = decoded._doc;
         next();
       }
     });
@@ -101,7 +102,16 @@ userRoutes.use(function(req, res, next) {
 
 // route to return all users (GET http://localhost:3000/user/users)
 userRoutes.post('/pets', function(req, res) {
-  //When this end point is completed it will save a pet to favorites
+  let id = req.body.id;
+  let userPets = req.currentUser.pets || [];
+  userPets.push(id);
+  User.update({ _id: req.currentUser._id }, { $set: { pets: userPets }}, function(err, raw) {
+    if(err){
+      console.log("error saving favorite pet " + err);
+    } else {
+      res.json({});
+    }
+  });
 });
 
 
