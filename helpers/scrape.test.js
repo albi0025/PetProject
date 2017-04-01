@@ -3,17 +3,9 @@ import scrape from './scrape';
 import fs from 'fs';
 
 describe('Scrape', () => {
-  //We need to figure out how to run callbacks and mock the data so that we can
-  //run this test.
-  xdescribe('scrapePetango', () => {
-    it('works', () => {
-      expect(scrape.scrapePetango("http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimals.aspx?species=Dog&sex=All&agegroup=All&colnum=1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d")).to.eql([]);
-    });
-  });
-  let html = fs.readFileSync("./helpers/html/scrapetest.html").toString();
-
   describe('parseAnimalListResponse', () => {
-    it('works', () => {
+    it('extracts the urls from the html', () => {
+      let html = fs.readFileSync("./helpers/html/scrapetest.html").toString();
       expect(scrape.parseAnimalListResponse(html)).to.eql(
         ["http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimalDetails.aspx?id=33150855&css=",
           "http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimalDetails.aspx?id=33927386&css=",
@@ -29,10 +21,10 @@ describe('Scrape', () => {
           "http://ws.petango.com/Webservices/adoptablesearch/wsAdoptableAnimalDetails.aspx?id=34843747&css="]);
     });
   });
-  let individualPetHtml = fs.readFileSync("./helpers/html/individualPetHtml.html").toString();
 
   describe('parseIndividualAnimalResponse', () => {
-    it('works', () => {
+    it('extracts the pet object from the html', () => {
+      let individualPetHtml = fs.readFileSync("./helpers/html/individualPetHtml.html").toString();
       expect(scrape.parseIndividualAnimalResponse(individualPetHtml)).to.eql(
         {
           animalId: 33150855,
