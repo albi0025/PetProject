@@ -14,14 +14,35 @@ export default class Navigation extends React.Component {
     };
 
     // This won't work...the token might have stale data.
-    let jwt = this.getCookie("token");
-    let jwtSegments = jwt.split(".");
-    let decoded = window.atob(jwtSegments[1]);
-    let user = JSON.parse(decoded)._doc;
+    // let jwt = this.getCookie("token");
+    // console.log(jwt)
+    // let jwtSegments = jwt.split(".");
+    // let decoded = window.atob(jwtSegments[1]);
+    // let user = JSON.parse(decoded)._doc;
     this.logout = this.logout.bind(this);
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
     this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
+    this.getUserFromDb = this.getUserFromDb.bind(this);
+  }
+
+  componentDidMount() {
+    this.getUserFromDb();
+  }
+
+  getUserFromDb() {
+    fetch("/user/userData",{
+      method:"GET",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + this.getCookie('token')
+      },
+    })
+    .then(result => result.json())
+    .then(data => {
+      console.log(data);
+    });
   }
 
   getCookie(cname) {

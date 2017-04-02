@@ -115,7 +115,15 @@ userRoutes.post('/pets', function(req, res) {
   });
 });
 
-
+userRoutes.get('/userData', function(req, res, next) {
+  User.findOne({ _id: req.currentUser._id }, function (err, user) {
+    if(err) {
+      return next(err);
+    } else {
+      res.json(user);
+    }
+  });
+});
 
 
 
