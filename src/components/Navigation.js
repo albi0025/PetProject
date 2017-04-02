@@ -12,6 +12,12 @@ export default class Navigation extends React.Component {
       lgShow: false,
       loggedIn: this.checkCookie()
     };
+
+    // This won't work...the token might have stale data.
+    let jwt = this.getCookie("token");
+    let jwtSegments = jwt.split(".");
+    let decoded = window.atob(jwtSegments[1]);
+    let user = JSON.parse(decoded)._doc;
     this.logout = this.logout.bind(this);
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
