@@ -10,15 +10,9 @@ export default class Navigation extends React.Component {
     super();
     this.state = {
       lgShow: false,
-      loggedIn: this.checkCookie()
+      loggedIn: this.checkCookie(),
+      currentUser: {}
     };
-
-    // This won't work...the token might have stale data.
-    // let jwt = this.getCookie("token");
-    // console.log(jwt)
-    // let jwtSegments = jwt.split(".");
-    // let decoded = window.atob(jwtSegments[1]);
-    // let user = JSON.parse(decoded)._doc;
     this.logout = this.logout.bind(this);
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
@@ -40,9 +34,7 @@ export default class Navigation extends React.Component {
       },
     })
     .then(result => result.json())
-    .then(data => {
-      console.log(data);
-    });
+    .then(data => this.setState({currentUser: data}));
   }
 
   getCookie(cname) {
