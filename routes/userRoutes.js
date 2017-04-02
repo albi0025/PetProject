@@ -103,9 +103,10 @@ userRoutes.use(function(req, res, next) {
 // route to return all users (GET http://localhost:3000/user/users)
 userRoutes.post('/pets', function(req, res) {
   let id = req.body.id;
-  let userPets = req.currentUser.pets || [];
-  userPets.push(id);
-  User.update({ _id: req.currentUser._id }, { $set: { pets: userPets }}, function(err, raw) {
+  // let userPets = req.currentUser.pets || [];
+  // userPets.push(id);
+  // console.log(userPets)
+  User.update({ _id: req.currentUser._id }, { $push: { pets: id }}, function(err, raw) {
     if(err){
       console.log("error saving favorite pet " + err);
     } else {

@@ -31,6 +31,8 @@ class PetCard extends React.Component {
   }
 
   heartPet(e) {
+    this.setState({heartButtonClass: "heart-button"});
+    console.log(e)
     fetch('user/pets', {
       method: 'POST',
       headers: {
@@ -58,7 +60,7 @@ class PetCard extends React.Component {
               Pet Info
             </Button>
             <Button onClick={this.heartPet} key={this.props.pet.name} bsStyle="primary">
-              <Glyphicon glyph="heart" />
+              <Glyphicon className={this.state.heartButtonClass} glyph="heart" />
             </Button>
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
