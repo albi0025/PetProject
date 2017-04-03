@@ -69,7 +69,6 @@ class PetCard extends React.Component {
     let heartButton = this.heartButton();
     return(
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
-
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
           <h2>{this.props.pet.name}</h2>
           <h4>Sponsor Me!</h4>

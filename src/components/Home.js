@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <div className="container">
+        <div className="homeContainer">
           <div className="header">
             <h1 className="words">Welcome to The</h1>
           </div>
