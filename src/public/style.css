@@ -53,7 +53,7 @@ Button:focus {
 }
 
 .header {
-  -webkit-transition: transform .5s ease-in-out;
+  -webkit-transition: transform 3s ease-in-out;
   background: url(/images/logo3.png) no-repeat, url(/images/dogsrunning2.jpg) no-repeat;
   background-size: 23vw, cover;
   background-position: center;
@@ -64,6 +64,7 @@ Button:focus {
   font-family: 'Raleway', sans-serif;
   text-align: center;
   color: white;
+  background-attachment: fixed
 }
 
 .header img {
@@ -87,7 +88,6 @@ Button:focus {
   display:block;
   margin: 3%;
   overflow: hidden;
-  background-color: #f2f2f2;
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
   -webkit-transition: transform .5s ease-in-out;
@@ -108,7 +108,6 @@ Button:focus {
 .homediv2 {
   display:block;
   margin: 3%;
-  background-color: #f2f2f2;
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
   -webkit-transition: transform .5s ease-in-out;
@@ -132,7 +131,6 @@ Button:focus {
 .homediv {
   overflow: hidden;
   margin-top: 70px;
-  background-color: #f2f2f2;
   background-size: 100%;
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
@@ -178,10 +176,15 @@ Button:focus {
 
 .pet-card {
   background-color: #f2f2f2;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: justify;
 }
 
 .thumbnail.pet-card img {
   width: 100%;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
 }
 
 #wrapper {
@@ -246,9 +249,13 @@ Button:focus {
  }
 
 #image-gallery-image {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 300px;
+  max-height: 300px;
+  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+
 }
+
+
 
 #card-text {
   font-family: 'Raleway', sans-serif;

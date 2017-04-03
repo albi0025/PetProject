@@ -13,7 +13,7 @@ export default function petAddedEmail(newPets, recipients) {
     to: 'timwalsh237@gmail.com',
     bcc: recipients,
     subject: newPetCount + ' Pets Have Been Added!',
-    text: newPetCount + ' Pets Have Been Added! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions!'
+    text: newPetCount + ' Pets have been added to the Bozeman Pet Project! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions and find your new best friend!'
   };
 
   mailgun.messages().send(data, function (error, body) {
