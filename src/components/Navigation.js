@@ -10,10 +10,9 @@ export default class Navigation extends React.Component {
     super();
     this.state = {
       lgShow: false,
-      loggedIn: this.checkCookie()
+      loggedIn: this.checkCookie(),
     };
     this.logout = this.logout.bind(this);
-    this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
     this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
   }

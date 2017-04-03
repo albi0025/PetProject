@@ -63,7 +63,7 @@ class Register extends React.Component{
           <br/>
           <br/>
           <br/>
-          <h1>Welcome {this.state.name}</h1>
+          <h3>Welcome {this.state.name}!</h3>
         </div>
       );
     }

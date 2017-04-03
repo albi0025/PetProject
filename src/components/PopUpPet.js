@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
 import React, {Component, PropTypes} from 'react';
 
+
 class PopUpPet extends React.Component{
   render() {
     return (

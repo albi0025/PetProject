@@ -1,3 +1,3 @@
 export default {
-  secret: 'ilovedogs'
+  secret: process.env.SECRET || 'ilovedogs'
 };

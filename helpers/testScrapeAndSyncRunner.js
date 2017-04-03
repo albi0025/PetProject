@@ -9,8 +9,8 @@ let options = {
 };
 mongoose.connect(mongooseUri, options);
 
-let scrapeRunner = require('./scrape');
-let syncRunner = require('./sync');
+import scrapeRunner from './scrape';
+import syncRunner from './sync';
 //
 let url = "http://ws.petango.com/Webservices/adoptablesearch/" +
   "wsAdoptableAnimals.aspx?sex=All&agegroup=All&colnum=" +
@@ -21,6 +21,5 @@ setInterval(scrapeAndSync, 3600000);
 function scrapeAndSync() {
   scrapeRunner.scrapePetango(url, function(arr) {
     syncRunner.syncPets(arr);
-    console.log(arr);
   });
 }
