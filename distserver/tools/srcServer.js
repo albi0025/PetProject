@@ -56,6 +56,14 @@ var _userRoutes = require('../routes/userRoutes');
 
 var _userRoutes2 = _interopRequireDefault(_userRoutes);
 
+var _scrape = require('../helpers/scrape');
+
+var _scrape2 = _interopRequireDefault(_scrape);
+
+var _sync = require('../helpers/sync');
+
+var _sync2 = _interopRequireDefault(_sync);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable no-console */
@@ -87,19 +95,16 @@ _mongoose2.default.connect(mongooseUri, options);
 var PROD = process.env.NODE_ENV === 'production';
 
 //Timed scrape and sync
-var scrapeRunner = require('../helpers/scrape');
-var syncRunner = require('../helpers/sync');
-//
+
 var url = "http://ws.petango.com/Webservices/adoptablesearch/" + "wsAdoptableAnimals.aspx?sex=All&agegroup=All&colnum=" + "1&authkey=1t4v495156y98t2wd78317102f933h83or1340ptjm31spd04d";
 //Call it when you npm start
-scrapeAndSync();
+//scrapeAndSync();
 //Call again every hour
 setInterval(scrapeAndSync, 3600000);
 
 function scrapeAndSync() {
-  scrapeRunner.scrapePetango(url, function (arr) {
-    syncRunner.syncPets(arr);
-    console.log(arr);
+  _scrape2.default.scrapePetango(url, function (arr) {
+    _sync2.default.syncPets(arr);
   });
 }
 

@@ -1,21 +1,29 @@
 'use strict';
 
+var _mongoose = require('mongoose');
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _mongodbUri = require('mongodb-uri');
+
+var _mongodbUri2 = _interopRequireDefault(_mongodbUri);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //We are starting this with two dogs in the database: Baltazaar and Loki.
 //In the scrape we are sending two dog objects: Baltazaar and Loretta.
 //Loretta does not exist in the database and needs to be added.
 //Loki is not in the scrape and needs to be removed from the database.
 //Baltazaar is in both the scrape and the DB so he should stay put.
 
-var mongoose = require("mongoose");
-var uriUtil = require('mongodb-uri');
-mongoose.Promise = global.Promise;
+_mongoose2.default.Promise = global.Promise;
 var mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/petsdata';
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+var mongooseUri = _mongodbUri2.default.formatMongoose(mongodbUri);
 var options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
-mongoose.connect(mongooseUri, options);
+_mongoose2.default.connect(mongooseUri, options);
 var syncRunner = require('./sync');
 var Pet = require('../models/pet');
 
