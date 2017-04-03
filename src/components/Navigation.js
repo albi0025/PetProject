@@ -13,7 +13,7 @@ class Navigation extends React.Component {
       lgShow: false
       // loggedIn: this.checkCookie(),
     };
-    this.logout = this.logout.bind(this);
+    // this.logout = this.logout.bind(this);
     // this.checkCookie = this.checkCookie.bind(this);
     // this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
   }
@@ -43,10 +43,10 @@ class Navigation extends React.Component {
   //   }
   // }
 
-  logout(e) {
-    document.cookie = "token=";
-    this.setState({loggedIn: false});
-  }
+  // logout(e) {
+  //   document.cookie = "token=";
+  //   this.setState({loggedIn: false});
+  // }
 
   // setIsLoggedInState(val) {
   //   this.setState({loggedIn: val});
@@ -74,7 +74,7 @@ class Navigation extends React.Component {
                 <NavItem className="navLinks" eventKey={3} href="/">
                   {
                     this.props.userStore.loggedIn ?
-                      <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button> :
+                      <Button onClick={this.props.userStore.logout} className="navButton" bsStyle="primary">Logout</Button> :
                       <Button className="navButton" bsStyle="primary" onClick={()=> {
                         this.setState({ lgShow: true });
                       }}>

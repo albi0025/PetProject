@@ -16,6 +16,7 @@ export default class UserStore {
     this.getUserFromDb = this.getUserFromDb.bind(this);
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   getUserFromDb() {
@@ -80,8 +81,16 @@ export default class UserStore {
     .then(res => {
       if(res.token) {
         document.cookie = "token=" + res.token;
+        this.loggedIn = true;
+      } else{
+        this.loggedIn = false;
       }
     });
+  }
+
+  logout(e) {
+    document.cookie = "token=";
+    this.loggedIn = false;
   }
 
 }
