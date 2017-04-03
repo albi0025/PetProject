@@ -91,22 +91,21 @@ Button:focus {
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
   -webkit-transition: transform .5s ease-in-out;
-
 }
 
 .homediv1 img {
   -moz-transition: all 1.4s;
   -webkit-transition: all 1.4s;
   -webkit-transition: all .5s ease-in-out;
-
+  opacity: 0.8;
 }
 
 .homediv1:hover img {
   -moz-transform: scale(1.01);
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
-  opacity: 0.7;
-  transition:opacity 1.5s;
+  opacity: 1;
+  transition: 1s;
 }
 
 .homediv2 {
@@ -121,14 +120,15 @@ Button:focus {
   -moz-transition: all 1.4s;
   -webkit-transition: all 1.4s;
   -webkit-transition: all .5s ease-in-out;
+  opacity: 0.8;
 }
 
 .homediv2:hover img {
   -moz-transform: scale(1.01);
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
-  opacity: 0.7;
-  transition:opacity 1.5s;
+  opacity: 1;
+  transition: 1s;
 }
 
 .outterhomediv {
@@ -191,6 +191,7 @@ Button:focus {
 .thumbnail.pet-card img {
   width: 100%;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  border-radius: 5px;
 }
 
 #wrapper {
@@ -258,7 +259,7 @@ Button:focus {
   max-width: 275px;
   max-height: 300px;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
-
+  border-radius: 5px;
 }
 
 
