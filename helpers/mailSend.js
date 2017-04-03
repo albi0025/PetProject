@@ -13,7 +13,8 @@ export default function petAddedEmail(newPets, recipients) {
     to: 'timwalsh237@gmail.com',
     bcc: recipients,
     subject: newPetCount + ' Pets Have Been Added!',
-    text: newPetCount + ' Pets have been added to the Bozeman Pet Project! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions and find your new best friend!'
+    text: newPetCount + ' Pets have been added to the Bozeman Pet Project! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions and find your new best friend!',
+    html: '<div style="width: 500px; height: 400px: background: #ebebeb; color: #ddd"><p>Hi  + "recipients.name" + \n ,this email is to inform you that has added their bio to the knowledge Base \n</p></div>'
   };
 
   mailgun.messages().send(data, function (error, body) {

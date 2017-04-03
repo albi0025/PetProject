@@ -34,9 +34,7 @@ class PopUpPet extends React.Component{
             <p id="card-text">Declawed: {this.props.pet.declawed}</p>
             <p id="card-text">Intake Date: {this.props.pet.intakeDate}</p>
             <p id="card-text">Description: </p><p>{this.props.pet.description}</p>
-
           </Col>
-          <li> <a href="#"><i className="fa fa-facebook"/></a></li>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>

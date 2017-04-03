@@ -1,7 +1,7 @@
 
 #mainDiv {
   display: inline-grid;
-  background-color: #dbdbdb;
+  background-color: #67707f;
   background-size: 100%;
 }
 
@@ -91,18 +91,22 @@ Button:focus {
   font-family: 'Raleway', sans-serif;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
   -webkit-transition: transform .5s ease-in-out;
+
 }
 
 .homediv1 img {
   -moz-transition: all 1.4s;
   -webkit-transition: all 1.4s;
   -webkit-transition: all .5s ease-in-out;
+
 }
 
 .homediv1:hover img {
   -moz-transform: scale(1.01);
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  opacity: 0.7;
+  transition:opacity 1.5s;
 }
 
 .homediv2 {
@@ -123,6 +127,8 @@ Button:focus {
   -moz-transform: scale(1.01);
   -webkit-transform: scale(1.01);
   transform: scale(1.01);
+  opacity: 0.7;
+  transition:opacity 1.5s;
 }
 
 .outterhomediv {
@@ -249,7 +255,7 @@ Button:focus {
  }
 
 #image-gallery-image {
-  max-width: 300px;
+  max-width: 275px;
   max-height: 300px;
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
 

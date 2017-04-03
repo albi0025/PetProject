@@ -16,7 +16,7 @@ export default class Home extends React.Component {
           <Row>
             <Col xs={12} md={6} lg={6}>
             <Link to={{pathname: '/DogDisplay'}}>
-              <Thumbnail className="homediv1" src="../images/mainpuppy.jpg" alt="242x200"/>
+              <Thumbnail className="homediv1 homeText" src="../images/mainpuppy.jpg" alt="242x200"/>
             </Link>
             </Col>
             <Col xs={12} md={6} lg={6}>
