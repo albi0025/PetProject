@@ -5,7 +5,7 @@ export default class UserStore {
   constructor() {
     extendObservable(this, {
       pets: [],
-      loggedIn: false
+      loggedIn: this.checkCookie()
     });
 
     autorun(() => console.log('autorunning.....'))
@@ -15,6 +15,7 @@ export default class UserStore {
     this.getCookie = this.getCookie.bind(this);
     this.getUserFromDb = this.getUserFromDb.bind(this);
     this.getCookie = this.getCookie.bind(this);
+    this.checkCookie = this.checkCookie.bind(this);
   }
 
   getUserFromDb() {
@@ -54,6 +55,15 @@ export default class UserStore {
     return "";
   }
 
+  checkCookie() {
+    let token = this.getCookie("token");
+    if (token === "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   authenticateUser(user) {
     fetch("/user/authenticate",{
       method:"POST",
@@ -70,7 +80,6 @@ export default class UserStore {
     .then(res => {
       if(res.token) {
         document.cookie = "token=" + res.token;
-        this.loggedIn = true;
       }
     });
   }

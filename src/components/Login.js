@@ -51,7 +51,7 @@ class Login extends React.Component{
   loginHandler(e){
     e.preventDefault();
     this.props.userStore.authenticateUser(this.state);
-    this.props.setIsLoggedInState(true);
+    // this.props.setIsLoggedInState(true);
   }
 
 
@@ -87,7 +87,7 @@ class Login extends React.Component{
 }
 
 Login.propTypes = {
-  setIsLoggedInState: React.PropTypes.func,
+  // setIsLoggedInState: React.PropTypes.func,
   userStore: React.PropTypes.object
 };
 
