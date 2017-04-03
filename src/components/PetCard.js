@@ -79,7 +79,7 @@ class PetCard extends React.Component {
             }}>
               Pet Info
             </Button>
-            {heartButton}
+            {this.props.userStore.loggedIn ? heartButton : ""}
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
         </Thumbnail>

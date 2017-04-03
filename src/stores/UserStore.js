@@ -4,7 +4,8 @@ import { extendObservable, mobx, autorun } from 'mobx';
 export default class UserStore {
   constructor() {
     extendObservable(this, {
-      pets: []
+      pets: [],
+      loggedIn: false
     });
 
     autorun(() => console.log('autorunning.....'))
@@ -35,7 +36,6 @@ export default class UserStore {
       return data.pets;
     })
     // .then(data => this.pets = data.pets);
-
   }
 
   getCookie(cname) {
@@ -53,4 +53,26 @@ export default class UserStore {
     }
     return "";
   }
+
+  authenticateUser(user) {
+    fetch("/user/authenticate",{
+      method:"POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password
+      })
+    })
+    .then(result => result.json())
+    .then(res => {
+      if(res.token) {
+        document.cookie = "token=" + res.token;
+        this.loggedIn = true;
+      }
+    });
+  }
+
 }
