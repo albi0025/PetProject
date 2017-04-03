@@ -55,7 +55,7 @@ userRoutes.post('/authenticate', function(req, res) {
         // if user is found and password is right
         // create a token
         let token = jwt.sign(user, app.get('superSecret'), {
-          expiresIn: 1440 // expires in 24 hours
+          // expiresIn: 1440 // expires in 24 hours
         });
 
         // return the information including token as JSON
@@ -116,7 +116,7 @@ userRoutes.post('/pets', function(req, res) {
 });
 
 userRoutes.get('/userData', function(req, res, next) {
-  User.findOne({ _id: req.currentUser._id }, function (err, user) {
+  User.findOne({ _id: req.currentUser._id }).populate('pets').exec(function (err, user) {
     if(err) {
       return next(err);
     } else {

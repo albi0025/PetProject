@@ -11,30 +11,10 @@ export default class Navigation extends React.Component {
     this.state = {
       lgShow: false,
       loggedIn: this.checkCookie(),
-      currentUser: {}
     };
     this.logout = this.logout.bind(this);
-    this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
     this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
-    this.getUserFromDb = this.getUserFromDb.bind(this);
-  }
-
-  componentDidMount() {
-    this.getUserFromDb();
-  }
-
-  getUserFromDb() {
-    fetch("/user/userData",{
-      method:"GET",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + this.getCookie('token')
-      },
-    })
-    .then(result => result.json())
-    .then(data => this.setState({currentUser: data}));
   }
 
   getCookie(cname) {

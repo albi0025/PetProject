@@ -6,8 +6,7 @@ import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid } from 'react-bootstra
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
 
-
-export default class DisplayPets extends React.Component {
+class DisplayPets extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,12 +21,13 @@ export default class DisplayPets extends React.Component {
 
   loadPetsFromDb() {
     fetch('/petsdata')
-    .then(result => result.json())
-    .then(data => this.setState({petPics: data}));
+      .then(result => result.json())
+      .then(data => this.setState({petPics: data}));
   }
-    //create a new array that is a filtered version of this.state.petPics
-    //example: if this.state.species === dog than the resulting array will only have dogs
-    //When creating the petPics array, map over filtered array instead of this.state.petPics
+
+  //create a new array that is a filtered version of this.state.petPics
+  //example: if this.state.species === dog than the resulting array will only have dogs
+  //When creating the petPics array, map over filtered array instead of this.state.petPics
   render() {
     let catOrDogArray = this.state.petPics.filter(function(pet) {
       return pet.species.toLowerCase() === this.state.species.toLowerCase();
@@ -56,7 +56,4 @@ DisplayPets.propTypes = {
   petPics: React.PropTypes.func
 };
 
-//Basic Pet Display
-// <img src={pet.mainPhoto}></img>
-// <h2>{pet.name}</h2>
-// <h3>{pet.description}</h3>
+export default DisplayPets;
