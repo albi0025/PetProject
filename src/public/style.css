@@ -231,7 +231,7 @@ Button:focus {
 
 }
 
-.yellow-button {
+/*.yellow-button {
   background-color: #F1B73F;
   font-family: 'Raleway', sans-serif;
 }
@@ -240,6 +240,10 @@ Button:focus {
   background-color: #007187;
   color: white;
   font-family: 'Raleway', sans-serif;
+}*/
+
+.heart-button {
+  color: red;
 }
 
  .sponsorship {
