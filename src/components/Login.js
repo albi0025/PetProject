@@ -58,7 +58,12 @@ class Login extends React.Component{
   render() {
     if(this.state.loggedIn){
       return(
-        <h1>{this.state.email} is logged in!</h1>
+        <div>
+        <br/>
+        <br/>
+        <br/>
+        <h3>Welcome {this.state.email}!</h3>
+        </div>
       );
     }
     return (

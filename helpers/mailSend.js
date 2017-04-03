@@ -10,10 +10,10 @@ export default function petAddedEmail(newPets, recipients) {
 
   let data = {
     from: 'Bozeman Pet Project <postmaster@sandbox18cb3aad561f4ec7a9b13d0813af6e6f.mailgun.org>',
-    to: 'albi0025@gmail.com',
+    to: 'timwalsh237@gmail.com',
     bcc: recipients,
-    subject: 'Hello',
-    text: newPetCount + ' Pets Have Been Added! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions!'
+    subject: newPetCount + ' Pets Have Been Added!',
+    text: newPetCount + ' Hello, Pets have been added to the Bozeman Pet Project! Please visit https://bozeman-pet-project.herokuapp.com/ to view the new additions and find your new best friend!'
   };
 
   mailgun.messages().send(data, function (error, body) {
