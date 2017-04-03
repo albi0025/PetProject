@@ -12,15 +12,14 @@ router.use(function(req, res, next){
 });
 
 router.route('/petsdata')
-
-.get(function(req, res, next){
-  Pet.find({"adopted": "false"}, function(err, pets){
-    if(err){
-      next(err);
-    } else {
-      res.json(pets);
-    }
+  .get(function(req, res, next){
+    Pet.find({"adopted": "false"}, function(err, pets){
+      if(err){
+        next(err);
+      } else {
+        res.json(pets);
+      }
+    });
   });
-});
 
 export default router;

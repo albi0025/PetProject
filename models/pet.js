@@ -15,7 +15,7 @@ let PetSchema = new mongoose.Schema({
   declawed: String,
   intakeDate: String,
   description: String,
-  adopted: { type: Boolean, default: false }
+  adopted: { type: Boolean, default: false },
 });
 
 export default mongoose.model('Pet', PetSchema);
