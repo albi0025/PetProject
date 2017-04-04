@@ -1,17 +1,29 @@
 
 body {
   /*display: inline-grid;*/
-  background-color: #67707f;
+  background-color: #dbdbdb;
   background-size: 100%;
+}
+
+.navbar .container {
+  margin: 0px;
+}
+.navbar-right {
+  margin-right: -17vw;
 }
 
 .navbar-brand {
   position: absolute;
   /*overflow: hidden;*/
-  max-height: 200px;
-  max-width: 400px;
+  max-width: 35vw;
   padding-top: 1vh;
   padding-bottom: 0;
+}
+
+@media (max-width:480px) {
+  .navbar-brand {
+    max-width: 80vw;
+  }
 }
 
 .Navbar {
@@ -60,7 +72,7 @@ Button:focus {
 .header {
   -webkit-transition: transform 3s ease-in-out;
   background: url(/images/logo3.png) no-repeat, url(/images/dogsrunning2.jpg) no-repeat;
-  background-size: 23vw, cover;
+  background-size: 300px, cover;
   background-position: center;
   position: relative;
   width: 100vw;
@@ -162,13 +174,20 @@ Button:focus {
   transform: scale(1.01);
 }
 
-/*.pet-div {
-  display: inline-grid;
+.sponsorship {
+  background-color: #222222;
+  color: #ffffff;
   width: 100vw;
-  height: 100vh;
-  background-color: #dbdbdb;
+  height: 40vh;
+  text-align: center;
   font-family: 'Raleway', sans-serif;
-}*/
+}
+
+.sponsorshipHeader {
+  line-height: 20vh;
+  font-family: 'Raleway', sans-serif;
+}
+
 /*------------------------------------DisplayPets----------------------*/
 .thumbnail.pet-card {
   box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
@@ -178,14 +197,32 @@ Button:focus {
   column-break-inside: avoid;
   padding: 15px;
   padding-bottom: 5px;
-  width: 350px;
+
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
 }
 
-.pet-card {
+@media screen and (min-width:480px)  {
+  .thumbnail.pet-card {
+    padding: 0px;
+    margin-bottom: 20px;
+    width: 400px;
+    margin-bottom: 15px;
+    color: red;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width:1281px) {
+  .thumbnail.pet-card {
+    width: 320px;
+    margin-left: 19px;
+  }
+}
+
+.thumbnail.pet-card {
   background-color: #f2f2f2;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
@@ -193,9 +230,11 @@ Button:focus {
   text-align: justify;
 }
 
+
+
 .thumbnail.pet-card img {
   width: 100%;
-  box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);
+  /*box-shadow: 3px 4px 23px -1px rgba(0,0,0,0.48);*/
   border-radius: 5px;
 }
 
@@ -207,19 +246,10 @@ Button:focus {
 }
 
 #columns {
-  padding-top: 15vh;
-	column-gap: 2vw;
+	column-gap: 0vw;
 	column-fill: auto;
+  padding-top: 50px;
 };
-
-/*@media (min-width:480px)  {
-  .pet-card.thumbnail {
-    float: none;
-    align-content: center;
-    margin-right: -2vw;
-    width: 100%;
-  }
-}*/
 
 @media (min-width:480px)  {
   #columns {
@@ -272,19 +302,6 @@ Button:focus {
 .heart-button {
   color: red;
 }
-
- .sponsorship {
-  width: 100vw;
-  height: 100vh;
-  margin-top: 100px;
-  text-align: center;
-  font-family: 'Raleway', sans-serif;
- }
-
- .sponsorhead {
-  line-height: 60vh;
-  font-family: 'Raleway', sans-serif;
- }
 
 #image-gallery-image {
   max-width: 275px;
