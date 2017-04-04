@@ -1,18 +1,24 @@
-let api_key = process.env.MAILGUN_API_KEY || 'key-8602cfc543746383ffdd2415b89cb2de';
-let domain = 'sandboxee624b132f4d406cba88159537c456e8.mailgun.org';
-let mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+'use strict';
 
-export default function petAddedEmail(newPets, recipients) {
-  let newPetCount = newPets.length;
-  if(newPetCount < 1) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = petAddedEmail;
+var api_key = process.env.MAILGUN_API_KEY || 'key-8602cfc543746383ffdd2415b89cb2de';
+var domain = 'sandboxee624b132f4d406cba88159537c456e8.mailgun.org';
+var mailgun = require('mailgun-js')({ apiKey: api_key, domain: domain });
+
+function petAddedEmail(newPets, recipients) {
+  var newPetCount = newPets.length;
+  if (newPetCount < 1) {
     return;
   }
 
-  let petNames = newPets.map(function(pet){
+  var petNames = newPets.map(function (pet) {
     return pet.species.toUpperCase() + ' - ' + pet.name;
   }).join(", \n _____ \n\n");
 
-  let data = {
+  var data = {
     from: 'Bozeman Pet Project <postmaster@sandbox18cb3aad561f4ec7a9b13d0813af6e6f.mailgun.org>',
     to: 'timwalsh237@gmail.com',
     bcc: recipients,
@@ -21,7 +27,7 @@ export default function petAddedEmail(newPets, recipients) {
   };
 
   mailgun.messages().send(data, function (error, body) {
-    if(error) {
+    if (error) {
       console.log("New Pets Email Error", error);
     } else {
       console.log("New Pets Email Sent", body);

@@ -1,8 +1,16 @@
-"use strict";
+'use strict';
 
-var mongoose = require("mongoose");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var PetSchema = new mongoose.Schema({
+var _mongoose = require('mongoose');
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PetSchema = new _mongoose2.default.Schema({
   url: String,
   animalId: Number,
   name: String,
@@ -20,4 +28,4 @@ var PetSchema = new mongoose.Schema({
   adopted: { type: Boolean, default: false }
 });
 
-module.exports = mongoose.model('Pet', PetSchema);
+exports.default = _mongoose2.default.model('Pet', PetSchema);
