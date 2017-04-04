@@ -41,7 +41,7 @@ class PetCard extends React.Component {
   }
 
   heartPet(e) {
-    this.props.userStore.heartPet(this.props.pet)
+    this.props.userStore.heartPet(this.props.pet);
   }
 
   render() {

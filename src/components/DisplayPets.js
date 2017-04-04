@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import PopUpPet from './PopUpPet';
 import PetCard from './PetCard';
 import { Button, ButtonToolbar, Col, Row, Thumbnail, Grid } from 'react-bootstrap';
+// import { observer, inject } from 'mobx-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
 
@@ -29,9 +30,15 @@ class DisplayPets extends React.Component {
   //example: if this.state.species === dog than the resulting array will only have dogs
   //When creating the petPics array, map over filtered array instead of this.state.petPics
   render() {
-    let catOrDogArray = this.state.petPics.filter(function(pet) {
-      return pet.species.toLowerCase() === this.state.species.toLowerCase();
-    }.bind(this));
+    let catOrDogArray = [];
+    if(this.state.species === 'cat' || this.state.species === 'dog') {
+      catOrDogArray = this.state.petPics.filter(function(pet) {
+        return pet.species.toLowerCase() === this.state.species.toLowerCase();
+      }.bind(this));
+    } else {
+      //else we are displaying Favorites
+      catOrDogArray = this.props.userStore.pets;
+    }
 
     let self = this;
     let lgClose = () => this.setState({ lgShow: false });
@@ -53,7 +60,7 @@ class DisplayPets extends React.Component {
 }
 
 DisplayPets.propTypes = {
-  petPics: React.PropTypes.func
+  userStore: React.PropTypes.object
 };
 
 export default DisplayPets;
