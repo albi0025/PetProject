@@ -2,7 +2,6 @@ import React from 'react';
 import webpack from 'webpack';
 import hash from 'password-hash';
 import User from '../models/user';
-import Pet from '../models/pet';
 import jwt from 'jsonwebtoken';
 import configAuth from '../tools/configAuth';
 import express from 'express';
@@ -110,17 +109,6 @@ userRoutes.post('/pets', function(req, res) {
       res.json({});
     }
   });
-});
-
-userRoutes.put('/pet/:animalId', function(req, res, next) {
-  Pet.update({animalId: req.animalId}, { $set: { amountSponsored: req.body.amountSponsored }},
-    function(err, pet) {
-      if(err) {
-        return next(err);
-      } else {
-        res.json(pet);
-      }
-    });
 });
 
 userRoutes.get('/userData', function(req, res, next) {

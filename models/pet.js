@@ -16,7 +16,7 @@ let PetSchema = new mongoose.Schema({
   intakeDate: String,
   description: String,
   adopted: { type: Boolean, default: false },
-  amountSponsored: Number 
+  amountSponsored: { type: Number, default: 0 } 
 });
 
 export default mongoose.model('Pet', PetSchema);
