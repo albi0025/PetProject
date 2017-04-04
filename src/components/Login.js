@@ -12,11 +12,9 @@ class Login extends React.Component{
       email: "",
       password: "",
       token: ""
-      // loggedIn: false
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    // this.authenticateUser = this.authenticateUser.bind(this);
     this.loginHandler = this.loginHandler.bind(this);
   }
 
@@ -28,32 +26,10 @@ class Login extends React.Component{
     this.setState({password: e.target.value});
   }
 
-  // authenticateUser() {
-  //   fetch("/user/authenticate",{
-  //     method:"POST",
-  //     headers: {
-  //       "Accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       email: this.state.email,
-  //       password: this.state.password
-  //     })
-  //   })
-  //   .then(result => result.json())
-  //   .then(res => {
-  //     if(res.token) {
-  //       document.cookie = "token=" + res.token;
-  //     }
-  //   });
-  // }
-
   loginHandler(e){
     e.preventDefault();
     this.props.userStore.authenticateUser(this.state);
-    // this.props.setIsLoggedInState(true);
   }
-
 
   render() {
     if(this.props.userStore.loggedIn){
@@ -87,7 +63,6 @@ class Login extends React.Component{
 }
 
 Login.propTypes = {
-  // setIsLoggedInState: React.PropTypes.func,
   userStore: React.PropTypes.object
 };
 

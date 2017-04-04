@@ -11,46 +11,9 @@ class Navigation extends React.Component {
     super();
     this.state = {
       lgShow: false
-      // loggedIn: this.checkCookie(),
     };
-    // this.logout = this.logout.bind(this);
-    // this.checkCookie = this.checkCookie.bind(this);
-    // this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
   }
 
-  // getCookie(cname) {
-  //   let name = cname + "=";
-  //   let decodedCookie = decodeURIComponent(document.cookie);
-  //   let ca = decodedCookie.split(';');
-  //   for(let i = 0; i < ca.length; i++) {
-  //     let c = ca[i];
-  //     while (c.charAt(0) == ' ') {
-  //       c = c.substring(1);
-  //     }
-  //     if (c.indexOf(name) == 0) {
-  //       return c.substring(name.length, c.length);
-  //     }
-  //   }
-  //   return "";
-  // }
-  //
-  // checkCookie() {
-  //   let token = this.getCookie("token");
-  //   if (token === "") {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
-
-  // logout(e) {
-  //   document.cookie = "token=";
-  //   this.setState({loggedIn: false});
-  // }
-
-  // setIsLoggedInState(val) {
-  //   this.setState({loggedIn: val});
-  // }
 
   render() {
     let lgClose = () => this.setState({ lgShow: false });

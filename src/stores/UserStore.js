@@ -1,5 +1,4 @@
-import { extendObservable, mobx, autorun } from 'mobx';
-// import { mobx } from 'mobx';
+import { extendObservable } from 'mobx';
 
 export default class UserStore {
   constructor() {
@@ -8,10 +7,6 @@ export default class UserStore {
       loggedIn: this.checkCookie()
     });
 
-    autorun(() => console.log('autorunning.....'))
-
-    // this.pets = [];
-    // observable(pets);
     this.getCookie = this.getCookie.bind(this);
     this.getUserFromDb = this.getUserFromDb.bind(this);
     this.getCookie = this.getCookie.bind(this);
@@ -29,15 +24,22 @@ export default class UserStore {
       },
     })
     .then(result => result.json())
-    .then(data => {
-      console.log(data.pets);
-      this.pets = data.pets;
-      // data.pets.forEach((pet) => this.pets.push(pet))
-      console.log('hey, I just changed this.pets');
-      console.log(this.pets);
-      return data.pets;
-    })
-    // .then(data => this.pets = data.pets);
+    .then(data => this.pets = data.pets);
+  }
+
+  heartPet(pet) {
+    fetch('user/pets', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.getCookie('token')
+      },
+      body: JSON.stringify({
+        id: pet._id
+      })
+    });
+    this.pets.push(pet);
   }
 
   getCookie(cname) {
