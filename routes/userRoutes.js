@@ -2,6 +2,7 @@ import React from 'react';
 import webpack from 'webpack';
 import hash from 'password-hash';
 import User from '../models/user';
+import Pet from '../models/pet';
 import jwt from 'jsonwebtoken';
 import configAuth from '../tools/configAuth';
 import express from 'express';
@@ -100,12 +101,8 @@ userRoutes.use(function(req, res, next) {
 
 //---------End middleware--------------------
 
-// route to return all users (GET http://localhost:3000/user/users)
 userRoutes.post('/pets', function(req, res) {
   let id = req.body.id;
-  // let userPets = req.currentUser.pets || [];
-  // userPets.push(id);
-  // console.log(userPets)
   User.update({ _id: req.currentUser._id }, { $push: { pets: id }}, function(err, raw) {
     if(err){
       console.log("error saving favorite pet " + err);
@@ -113,6 +110,17 @@ userRoutes.post('/pets', function(req, res) {
       res.json({});
     }
   });
+});
+
+userRoutes.put('/pet/:animalId', function(req, res, next) {
+  Pet.update({animalId: req.animalId}, { $set: { amountSponsored: req.body.amountSponsored }},
+    function(err, pet) {
+      if(err) {
+        return next(err);
+      } else {
+        res.json(pet);
+      }
+    });
 });
 
 userRoutes.get('/userData', function(req, res, next) {
@@ -124,7 +132,5 @@ userRoutes.get('/userData', function(req, res, next) {
     }
   });
 });
-
-
 
 export default userRoutes;
