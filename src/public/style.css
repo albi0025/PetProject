@@ -15,7 +15,7 @@ body {
 .navbar-brand {
   position: absolute;
   /*overflow: hidden;*/
-  max-width: 35vw;
+  max-width: 420px;
   padding-top: 1vh;
   padding-bottom: 0;
 }
@@ -84,6 +84,14 @@ Button:focus {
   background-attachment: fixed
 }
 
+@media (max-width:480px) {
+  .header {
+    background: url(/images/logo3.png) no-repeat, url(/images/dogsrunningcropped.jpg) no-repeat;
+    background-size: 250px, cover;
+    background-position: center;
+  }
+}
+
 .header img {
   max-width: 100%;
   -moz-transition: all 1.4s;
@@ -92,9 +100,9 @@ Button:focus {
 }
 
 .header:hover {
-  -moz-transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  -moz-transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
 }
 
 .words {
