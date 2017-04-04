@@ -4,52 +4,16 @@ import Login from './Login';
 import NavModal from './NavModal';
 import { Navbar, NavItem, Nav, Col, MenuItem, NavDropdown, ButtonToolbar, Button} from 'react-bootstrap';
 import { Link } from 'react-router';
+import { observer, inject } from 'mobx-react';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
   constructor() {
     super();
     this.state = {
-      lgShow: false,
-      loggedIn: this.checkCookie(),
+      lgShow: false
     };
-    this.logout = this.logout.bind(this);
-    this.checkCookie = this.checkCookie.bind(this);
-    this.setIsLoggedInState = this.setIsLoggedInState.bind(this);
   }
 
-  getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
-  checkCookie() {
-    let token = this.getCookie("token");
-    if (token === "") {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  logout(e) {
-    document.cookie = "token=";
-    this.setState({loggedIn: false});
-  }
-
-  setIsLoggedInState(val) {
-    this.setState({loggedIn: val});
-  }
 
   render() {
     let lgClose = () => this.setState({ lgShow: false });
@@ -72,8 +36,8 @@ export default class Navigation extends React.Component {
                 </NavItem>
                 <NavItem className="navLinks" eventKey={3} href="/">
                   {
-                    this.state.loggedIn ?
-                      <Button onClick={this.logout} className="navButton" bsStyle="primary">Logout</Button> :
+                    this.props.userStore.loggedIn ?
+                      <Button onClick={this.props.userStore.logout} className="navButton" bsStyle="primary">Logout</Button> :
                       <Button className="navButton" bsStyle="primary" onClick={()=> {
                         this.setState({ lgShow: true });
                       }}>
@@ -83,7 +47,7 @@ export default class Navigation extends React.Component {
                 </NavItem>
                 <NavItem eventKey={4}>
                   <ButtonToolbar>
-                    <NavModal setIsLoggedInState={this.setIsLoggedInState} show={this.state.lgShow} onHide={lgClose} />
+                    <NavModal show={this.state.lgShow} onHide={lgClose} />
                   </ButtonToolbar>
                 </NavItem>
               </Nav>
@@ -93,3 +57,9 @@ export default class Navigation extends React.Component {
     );
   }
 }
+
+Navigation.propTypes = {
+  userStore: React.PropTypes.object
+};
+
+export default inject("userStore")(observer(Navigation));

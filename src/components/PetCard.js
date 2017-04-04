@@ -9,28 +9,19 @@ class PetCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lgShow: false,
-      heartButtonClass: ""
+      lgShow: false
     };
     this.getCookie = this.getCookie.bind(this);
     this.heartPet = this.heartPet.bind(this);
-    this.heartButton = this.heartButton.bind(this);
+    this.isFavorite = this.isFavorite.bind(this);
   }
 
-  heartButton() {
+  isFavorite() {
     let favoritePets = this.props.userStore.pets || [];
     let animalIds = favoritePets.map(function(pet) {
       return pet.animalId;
     });
-    let heartButtonClass = this.state.heartButtonClass;
-    if(animalIds.indexOf(this.props.pet.animalId) > -1) {
-      heartButtonClass = "heart-button";
-    }
-    return (
-      <Button onClick={this.heartPet} key={this.props.pet.name} bsStyle="primary">
-        <Glyphicon className={heartButtonClass} glyph="heart" />
-      </Button>
-    );
+    return animalIds.indexOf(this.props.pet.animalId) > -1;
   }
 
   getCookie(cname) {
@@ -50,26 +41,14 @@ class PetCard extends React.Component {
   }
 
   heartPet(e) {
-    this.setState({heartButtonClass: "heart-button"});
-    fetch('user/pets', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.getCookie('token')
-      },
-      body: JSON.stringify({
-        id: this.props.pet._id
-      })
-    });
+    this.props.userStore.heartPet(this.props.pet)
   }
 
   render() {
     let lgClose = () => this.setState({ lgShow: false });
-    let heartButton = this.heartButton();
+    let heartButtonClass = this.isFavorite() ? "heart-button" : "";
     return(
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
-
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
           <h2>{this.props.pet.name}</h2>
           <h4>Sponsor Me!</h4>
@@ -79,7 +58,12 @@ class PetCard extends React.Component {
             }}>
               Pet Info
             </Button>
-            {heartButton}
+            {
+              this.props.userStore.loggedIn ?
+                <Button onClick={this.heartPet} key={this.props.pet.name} bsStyle="primary">
+                  <Glyphicon className={heartButtonClass} glyph="heart" />
+                </Button> : ''
+            }
             <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
         </Thumbnail>
