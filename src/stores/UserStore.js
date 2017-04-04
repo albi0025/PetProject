@@ -82,6 +82,7 @@ export default class UserStore {
       if(res.token) {
         document.cookie = "token=" + res.token;
         this.loggedIn = true;
+        this.getUserFromDb();
       } else{
         this.loggedIn = false;
       }
