@@ -1,19 +1,17 @@
-import { extendObservable, mobx, autorun } from 'mobx';
-// import { mobx } from 'mobx';
+import { extendObservable } from 'mobx';
 
 export default class UserStore {
   constructor() {
     extendObservable(this, {
-      pets: []
+      pets: [],
+      loggedIn: this.checkCookie()
     });
 
-    autorun(() => console.log('autorunning.....'))
-
-    // this.pets = [];
-    // observable(pets);
     this.getCookie = this.getCookie.bind(this);
     this.getUserFromDb = this.getUserFromDb.bind(this);
     this.getCookie = this.getCookie.bind(this);
+    this.checkCookie = this.checkCookie.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   getUserFromDb() {
@@ -26,16 +24,22 @@ export default class UserStore {
       },
     })
     .then(result => result.json())
-    .then(data => {
-      console.log(data.pets);
-      this.pets = data.pets;
-      // data.pets.forEach((pet) => this.pets.push(pet))
-      console.log('hey, I just changed this.pets');
-      console.log(this.pets);
-      return data.pets;
-    })
-    // .then(data => this.pets = data.pets);
+    .then(data => this.pets = data.pets);
+  }
 
+  heartPet(pet) {
+    fetch('user/pets', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.getCookie('token')
+      },
+      body: JSON.stringify({
+        id: pet._id
+      })
+    });
+    this.pets.push(pet);
   }
 
   getCookie(cname) {
@@ -53,4 +57,43 @@ export default class UserStore {
     }
     return "";
   }
+
+  checkCookie() {
+    let token = this.getCookie("token");
+    if (token === "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  authenticateUser(user) {
+    fetch("/user/authenticate",{
+      method:"POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: user.email,
+        password: user.password
+      })
+    })
+    .then(result => result.json())
+    .then(res => {
+      if(res.token) {
+        document.cookie = "token=" + res.token;
+        this.loggedIn = true;
+        this.getUserFromDb();
+      } else{
+        this.loggedIn = false;
+      }
+    });
+  }
+
+  logout(e) {
+    document.cookie = "token=";
+    this.loggedIn = false;
+  }
+
 }

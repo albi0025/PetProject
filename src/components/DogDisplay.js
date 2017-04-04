@@ -1,6 +1,5 @@
 import DisplayPets from './DisplayPets';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { observer, inject } from 'mobx-react';
 
 class DogDisplay extends DisplayPets {
   constructor() {
@@ -11,4 +10,6 @@ class DogDisplay extends DisplayPets {
 
 
 
-export default DogDisplay;
+
+
+export default inject("userStore")(observer(DogDisplay));

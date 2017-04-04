@@ -28,14 +28,16 @@ var _configAuth = require('../tools/configAuth');
 
 var _configAuth2 = _interopRequireDefault(_configAuth);
 
+var _express = require('express');
+
+var _express2 = _interopRequireDefault(_express);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = require('express');
-var userRoutes = express.Router();
-var app = express();
+var userRoutes = _express2.default.Router();
+var app = (0, _express2.default)();
 
 userRoutes.use(function (req, res, next) {
-  console.log('User Routes Activity...');
   res.setHeader('Content-Type', 'application/json');
   next();
 });
@@ -47,6 +49,7 @@ userRoutes.post('/newUser', function (req, res) {
   user.name = req.body.name;
   user.password = _passwordHash2.default.generate(req.body.password);
   user.email = req.body.email;
+  user.subscribed = req.body.subscribed;
 
   user.save(function (err, user) {
     if (err) {
@@ -61,7 +64,7 @@ userRoutes.post('/newUser', function (req, res) {
 userRoutes.post('/authenticate', function (req, res) {
   // find the user
   _user2.default.findOne({
-    name: req.body.name
+    email: req.body.email
   }, function (err, user) {
 
     if (err) throw err;
@@ -73,20 +76,17 @@ userRoutes.post('/authenticate', function (req, res) {
       // check if password matches
       if (!_passwordHash2.default.verify(req.body.password, user.password)) {
         res.json({
-          success: false,
           message: 'Authentication failed. Wrong password.'
         });
       } else {
         // if user is found and password is right
         // create a token
         var token = _jsonwebtoken2.default.sign(user, app.get('superSecret'), {
-          expiresIn: 1440 // expires in 24 hours
+          // expiresIn: 1440 // expires in 24 hours
         });
 
         // return the information including token as JSON
         res.json({
-          success: true,
-          message: 'Enjoy your token!',
           token: token
         });
       }
@@ -97,9 +97,8 @@ userRoutes.post('/authenticate', function (req, res) {
 
 // route middleware to verify a token
 userRoutes.use(function (req, res, next) {
-
   // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  var token = req.headers.authorization.replace("Bearer", "").trim();
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -108,7 +107,8 @@ userRoutes.use(function (req, res, next) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
+        // req.decoded = decoded;
+        req.currentUser = decoded._doc;
         next();
       }
     });
@@ -125,9 +125,27 @@ userRoutes.use(function (req, res, next) {
 //---------End middleware--------------------
 
 // route to return all users (GET http://localhost:3000/user/users)
-userRoutes.get('/users', function (req, res) {
-  _user2.default.find({}, function (err, users) {
-    res.json(users);
+userRoutes.post('/pets', function (req, res) {
+  var id = req.body.id;
+  // let userPets = req.currentUser.pets || [];
+  // userPets.push(id);
+  // console.log(userPets)
+  _user2.default.update({ _id: req.currentUser._id }, { $push: { pets: id } }, function (err, raw) {
+    if (err) {
+      console.log("error saving favorite pet " + err);
+    } else {
+      res.json({});
+    }
+  });
+});
+
+userRoutes.get('/userData', function (req, res, next) {
+  _user2.default.findOne({ _id: req.currentUser._id }).populate('pets').exec(function (err, user) {
+    if (err) {
+      return next(err);
+    } else {
+      res.json(user);
+    }
   });
 });
 

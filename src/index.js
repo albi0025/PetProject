@@ -10,6 +10,7 @@ import App from './components/App';
 import Login from './components/Login';
 import CatDisplay from './components/CatDisplay';
 import DogDisplay from './components/DogDisplay';
+import FavoritesDisplay from './components/FavoritesDisplay';
 
 const userStore = new UserStore();
 
@@ -20,6 +21,7 @@ render((
         <IndexRoute component={Home}/>
         <Route path="/CatDisplay" component={CatDisplay}/>
         <Route path="/DogDisplay" component={DogDisplay}/>
+        <Route path="/FavoritesDisplay" component={FavoritesDisplay}/>
       </Route>
     </Router>
   </Provider>

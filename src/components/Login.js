@@ -3,6 +3,7 @@ import { Col, Button, ButtonToolbar, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../public/style.css';
 import React, {Component, PropTypes} from 'react';
+import { observer, inject } from 'mobx-react';
 
 class Login extends React.Component{
   constructor() {
@@ -10,12 +11,10 @@ class Login extends React.Component{
     this.state = {
       email: "",
       password: "",
-      token: "",
-      loggedIn: false
+      token: ""
     };
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.authenticateUser = this.authenticateUser.bind(this);
     this.loginHandler = this.loginHandler.bind(this);
   }
 
@@ -27,36 +26,13 @@ class Login extends React.Component{
     this.setState({password: e.target.value});
   }
 
-  authenticateUser() {
-    fetch("/user/authenticate",{
-      method:"POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    })
-    .then(result => result.json())
-    .then(res => {
-      if(res.token) {
-        document.cookie = "token=" + res.token;
-      }
-    });
-  }
-
   loginHandler(e){
     e.preventDefault();
-    this.authenticateUser();
-    this.props.setIsLoggedInState(true);
-    this.setState({loggedIn: true});
+    this.props.userStore.authenticateUser(this.state);
   }
 
-
   render() {
-    if(this.state.loggedIn){
+    if(this.props.userStore.loggedIn){
       return(
         <div>
         <br/>
@@ -87,7 +63,7 @@ class Login extends React.Component{
 }
 
 Login.propTypes = {
-  setIsLoggedInState: React.PropTypes.func
+  userStore: React.PropTypes.object
 };
 
-export default Login;
+export default inject("userStore")(observer(Login));

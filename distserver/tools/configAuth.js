@@ -4,5 +4,5 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  secret: 'ilovedogs'
+  secret: process.env.SECRET || 'ilovedogs'
 };
