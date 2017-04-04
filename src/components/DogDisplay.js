@@ -1,4 +1,3 @@
-import React from 'react';
 import DisplayPets from './DisplayPets';
 import { observer, inject } from 'mobx-react';
 
@@ -8,5 +7,9 @@ class DogDisplay extends DisplayPets {
     this.state.species = "dog";
   }
 }
+
+
+
+
 
 export default inject("userStore")(observer(DogDisplay));
