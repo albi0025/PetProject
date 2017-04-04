@@ -1,5 +1,6 @@
 import React from 'react';
 import DisplayPets from './DisplayPets';
+import { observer, inject } from 'mobx-react';
 
 class DogDisplay extends DisplayPets {
   constructor() {
@@ -8,4 +9,4 @@ class DogDisplay extends DisplayPets {
   }
 }
 
-export default DogDisplay;
+export default inject("userStore")(observer(DogDisplay));

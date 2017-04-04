@@ -2,11 +2,10 @@ import React from 'react';
 import DisplayPets from './DisplayPets';
 import { observer, inject } from 'mobx-react';
 
-class CatDisplay extends DisplayPets {
+class FavoritesDisplay extends DisplayPets {
   constructor() {
     super();
-    this.state.species = "cat";
   }
 }
 
-export default inject("userStore")(observer(CatDisplay));
+export default inject("userStore")(observer(FavoritesDisplay));

@@ -34,7 +34,13 @@ class Navigation extends React.Component {
                 <NavItem className="navLinks" eventKey={2} href="/CatDisplay">
                   <Link to={{ pathname: '/CatDisplay' }}>Cats</Link>
                 </NavItem>
-                <NavItem className="navLinks" eventKey={3} href="/">
+                <NavItem className="navLinks" eventKey={3} href="/FavoritesDisplay">
+                  {
+                    this.props.userStore.loggedIn ?
+                      <Link to={{ pathname: '/FavoritesDisplay' }}>Favorites</Link> : ""
+                  }
+                </NavItem>
+                <NavItem className="navLinks" eventKey={4} href="/">
                   {
                     this.props.userStore.loggedIn ?
                       <Button onClick={this.props.userStore.logout} className="navButton" bsStyle="primary">Logout</Button> :
@@ -45,7 +51,7 @@ class Navigation extends React.Component {
                       </Button>
                   }
                 </NavItem>
-                <NavItem eventKey={4}>
+                <NavItem eventKey={5}>
                   <ButtonToolbar>
                     <NavModal show={this.state.lgShow} onHide={lgClose} />
                   </ButtonToolbar>
