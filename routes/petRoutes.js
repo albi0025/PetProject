@@ -22,7 +22,7 @@ petRoutes.route('/petsdata')
   });
 
 petRoutes.put('/pet/:animalId', function(req, res, next) {
-  Pet.update({animalId: req.animalId}, { $inc: { amountSponsored: req.body.amountSponsored }},
+  Pet.update({animalId: req.params.animalId}, { $inc: { amountSponsored: req.body.amountSponsored }},
     function(err, pet) {
       if(err) {
         return next(err);
