@@ -111,6 +111,8 @@ Button:focus {
 }
 
 .homediv1 {
+  background: url(/images/Dogshover.jpg) no-repeat;
+  background-position: right;
   display:block;
   margin: 3%;
   overflow: hidden;
@@ -146,6 +148,8 @@ Button:focus {
 }
 
 .homediv2 {
+  background: url(/images/Catshover.jpg) no-repeat;
+  background-position: left;
   display:block;
   margin: 3%;
   font-family: 'Raleway', sans-serif;
