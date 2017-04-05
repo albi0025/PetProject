@@ -46,7 +46,7 @@ class Sponsorship extends React.Component {
     return(
       <div>
         <br/>
-        <ProgressBar now={this.progressPercentage(this.state.amountSponsored) + this.state.amountInDb}
+        <ProgressBar now={this.progressPercentage(parseInt(this.state.amountSponsored) + parseInt(this.state.amountInDb))}
                      label={`$${parseInt(this.state.amountSponsored) + parseInt(this.state.amountInDb)}`} />
         <form>
           <input onChange={this.handleAmountSponsoredChange} type="email" name="email"
