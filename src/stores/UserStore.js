@@ -47,8 +47,8 @@ export default class UserStore {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.getCookie('token')
+        'Content-Type': 'application/json'
+        // 'Authorization': 'Bearer ' + this.getCookie('token')
       },
       body: JSON.stringify({
         amountSponsored: pet.amountSponsored
