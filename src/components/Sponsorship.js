@@ -16,7 +16,9 @@ class Sponsorship extends React.Component {
   }
 
   handleAmountSponsoredChange(e) {
-    this.setState({amountSponsored: e.target.value});
+    let num = parseInt(e.target.value);
+    let parsedNum = num ? num : 0;
+    this.setState({amountSponsored: parsedNum});
   }
 
   submitHandler(e){
