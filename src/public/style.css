@@ -125,6 +125,7 @@ Button:focus {
   -webkit-transition: all .5s ease-in-out;
   opacity: 0.8;
 }
+
 /*---------------------------------------------div to work on------------------------------------*/
 /*.child {
   z-index: 999;
@@ -176,8 +177,14 @@ Button:focus {
   font-family: 'Raleway', sans-serif;
 }
 
+@media (max-width:480px) {
+  .sponsorship {
+    height: 55.4vh;
+  }
+}
+
 .sponsorshipHeader {
-  line-height: 20vh;
+  line-height: 10vh;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -206,7 +213,7 @@ Button:focus {
 @media (min-width:1281px) {
   .thumbnail.pet-card {
     width: 320px;
-    margin-left: 19px;
+    margin-left: 1.5vw;
   }
 }
 
@@ -229,7 +236,6 @@ Button:focus {
 }
 
 #columns {
-  clear: both;
 	column-gap: 0vw;
   padding-top: 50px;
   padding-bottom: 20px;
@@ -244,6 +250,18 @@ Button:focus {
 @media (min-width: 820px) {
   #columns {
     column-count: 2;
+  }
+}
+
+@media screen and (min-aspect-ratio: 370/665) and (max-aspect-ratio: 1024/1366) {
+  #columns {
+    column-count: 1;
+  }
+  .thumbnail.pet-card {
+    text-align: center;
+    width: 100vw;
+    margin-left: 0px;
+    margin-bottom: 1vh;
   }
 }
 
