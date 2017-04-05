@@ -1,5 +1,4 @@
 import React from 'react';
-import { observer, inject } from 'mobx-react';
 import { Button, ProgressBar } from 'react-bootstrap';
 
 
@@ -63,8 +62,7 @@ class Sponsorship extends React.Component {
 }
 
 Sponsorship.propTypes = {
-  pet: React.PropTypes.object,
-  userStore: React.PropTypes.object,
+  pet: React.PropTypes.object
 };
 
-export default inject("userStore")(observer(Sponsorship));
+export default Sponsorship;
