@@ -319,7 +319,7 @@ Button:focus {
 }
 
 .heart-button {
-  color: red;
+  color: #d3505d;
 }
 
 #image-gallery-image {
@@ -338,4 +338,9 @@ Button:focus {
 
 .progress {
   background-color: #b6b6b6;
+}
+
+.progress-bar {
+  font-size: 16px;
+  background-color: #d3505d;
 }

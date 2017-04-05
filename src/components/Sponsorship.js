@@ -7,7 +7,8 @@ class Sponsorship extends React.Component {
     super(props);
     this.state = {
       amountSponsored: 0,
-      amountInDb: this.props.pet.amountSponsored
+      amountInDb: this.props.pet.amountSponsored,
+      moneySent: false
     };
     this.handleAmountSponsoredChange = this.handleAmountSponsoredChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
@@ -23,6 +24,7 @@ class Sponsorship extends React.Component {
   submitHandler(e){
     e.preventDefault();
     this.sponsorPet(this.state.amountSponsored, this.props.pet.animalId);
+    this.setState({moneySent: true})
   }
 
   sponsorPet(amountSponsored, animalId) {
@@ -43,7 +45,13 @@ class Sponsorship extends React.Component {
   }
 
   render() {
-
+    if(this.state.moneySent) {
+      return(
+        <div>
+          <h3>Thanks FUR your donation! <br/><br/> &mdash;{this.props.pet.name}</h3>
+        </div>
+      );
+    }
     return(
       <div>
         <br/>
