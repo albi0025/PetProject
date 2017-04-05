@@ -50,6 +50,7 @@ class PetCard extends React.Component {
     return(
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
+          <ProgressBar now={this.props.pet.amountSponsored} label={`${this.props.pet.amountSponsored}%`} />
           <h2>{this.props.pet.name}</h2>
           <h4>Sponsor Me!</h4>
           <ButtonToolbar>

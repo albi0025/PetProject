@@ -42,20 +42,6 @@ export default class UserStore {
     this.pets.push(pet);
   }
 
-  sponsorPet(pet) {
-    fetch('/pet/' + pet.animalId, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.getCookie('token')
-      },
-      body: JSON.stringify({
-        amountSponsored: pet.amountSponsored
-      })
-    });
-  }
-
   getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
