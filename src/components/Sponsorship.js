@@ -7,7 +7,8 @@ class Sponsorship extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      amountSponsored: this.props.pet.amountSponsored
+      amountSponsored: 0,
+      amountInDb: this.props.pet.amountSponsored
     };
     this.handleAmountSponsoredChange = this.handleAmountSponsoredChange.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
@@ -45,7 +46,8 @@ class Sponsorship extends React.Component {
     return(
       <div>
         <br/>
-        <ProgressBar now={this.progressPercentage(this.state.amountSponsored)} label={`$${this.state.amountSponsored}`} />
+        <ProgressBar now={this.progressPercentage(this.state.amountSponsored) + this.state.amountInDb}
+                     label={`$${parseInt(this.state.amountSponsored) + parseInt(this.state.amountInDb)}`} />
         <form>
           <input onChange={this.handleAmountSponsoredChange} type="email" name="email"
                  value={this.state.handleAmountSponsoredChange} placeholder="$$$ Amount"/>
