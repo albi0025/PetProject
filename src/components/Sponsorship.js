@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 import { Button, ProgressBar } from 'react-bootstrap';
 
 
@@ -57,20 +58,24 @@ class Sponsorship extends React.Component {
         <br/>
         <ProgressBar now={this.progressPercentage(parseInt(this.state.amountSponsored) + parseInt(this.state.amountInDb))}
                      label={`$${parseInt(this.state.amountSponsored) + parseInt(this.state.amountInDb)}`} />
-        <form>
-          <input onChange={this.handleAmountSponsoredChange} type="email" name="email"
-                 value={this.state.handleAmountSponsoredChange} placeholder="$$$ Amount"/>
-          <br/>
-          <br/>
-          <Button onClick={this.submitHandler} type="submit">Sponsor</Button>
-        </form>
+        {
+          this.props.userStore.loggedIn ?
+          <form>
+            <input onChange={this.handleAmountSponsoredChange} type="email" name="email"
+                   value={this.state.handleAmountSponsoredChange} placeholder="$$$ Amount"/>
+            <br/>
+            <br/>
+            <Button onClick={this.submitHandler} type="submit">Sponsor</Button>
+          </form> : ""
+        }
       </div>
     );
   }
 }
 
 Sponsorship.propTypes = {
-  pet: React.PropTypes.object
+  pet: React.PropTypes.object,
+  userStore: React.PropTypes.object
 };
 
-export default Sponsorship;
+export default inject("userStore")(observer(Sponsorship));
