@@ -132,8 +132,20 @@ Button:focus {
   transform: scale(1.01);
 }
 
-.words {
-  line-height: 70vh;
+.aboutDiv {
+  background-color: #222222;
+  color: #ffffff;
+  width: 100vw;
+  height: 40vh;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.aboutHeader {
+  margin-top: -5vh;
+  margin-bottom: -5vh;
+  line-height: 20vh;
+  font-family: 'Raleway', sans-serif;
 }
 
 .homediv1 {
@@ -191,7 +203,7 @@ Button:focus {
   background-color: #222222;
   color: #ffffff;
   width: 100vw;
-  height: 400px;
+  height: 46vh;
   text-align: center;
   font-family: 'Raleway', sans-serif;
 }
