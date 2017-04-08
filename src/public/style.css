@@ -275,11 +275,15 @@ Button:focus {
 .green-bar .progress-bar {
   font-size: 16px;
   background-color: #25b38d;
+  text-align: left;
+  text-indent: 15px;
 }
 
 .red-bar .progress-bar {
  font-size: 16px;
  background-color: #d3505d;
+ text-align: left;
+ text-indent: 15px;
 }
 
 .heart-button {
