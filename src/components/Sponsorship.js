@@ -47,7 +47,7 @@ class Sponsorship extends React.Component {
   }
 
   render() {
-    let fullySponsored = this.props.pet.amountSponsored >= 500 ? "green-bar" : "red-bar";
+    let fullySponsored = this.state.amountSponsored + this.state.amountInDb >= 500 ? "green-bar" : "red-bar";
     if(this.state.moneySent) {
       return(
         <div>

@@ -10,8 +10,7 @@ class PetCard extends React.Component {
     super(props);
     this.state = {
       lgShow: false,
-      amountSponsored: 0,
-      amountInDb: this.props.pet.amountSponsored
+      amountSponsored: this.props.pet.amountSponsored
     };
     this.getCookie = this.getCookie.bind(this);
     this.heartPet = this.heartPet.bind(this);
@@ -54,20 +53,19 @@ class PetCard extends React.Component {
 
   updateSponsorshipState(val) {
     console.log(val);
-    this.setState({amountSponsored: val});
+    this.setState({amountSponsored: val + this.state.amountSponsored});
   }
 
   render() {
     let lgClose = () => this.setState({ lgShow: false });
     let heartButtonClass = this.isFavorite() ? "heart-button" : "";
-    let fullySponsored = this.props.pet.amountSponsored >= 500 ? "green-bar" : "red-bar";
+    let fullySponsored = this.state.amountSponsored >= 500 ? "green-bar" : "red-bar";
     return(
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
           <div className={fullySponsored}>
-            <ProgressBar now={this.cardProgressPercentage(parseInt(this.state.amountSponsored)
-              + parseInt(this.state.amountInDb))} label={`$${parseInt(this.state.amountSponsored)
-              + parseInt(this.state.amountInDb)}`} />
+            <ProgressBar now={this.cardProgressPercentage(this.state.amountSponsored)}
+                        label={`$${this.state.amountSponsored}`} />
           </div>
           <h2>{this.props.pet.name}</h2>
           <h4>Sponsor Me!</h4>
