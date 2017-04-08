@@ -8,9 +8,18 @@ export default class Home extends React.Component {
     return(
       <div>
         <div className="homeContainer">
-          <div className="header">
-            <h1 className="words"/>
-          </div>
+          <div className="header"/>
+        </div>
+        <div className="aboutDiv">
+        <h2 className="aboutHeader">Welcome to Bozeman Pet Project</h2>
+        <h4>This site is a responsive modile friendly way to keep an
+        eye on all of your local furry friends. <br/>
+        this site includes up to date info on all
+        of the animals that are currently available for adoption as well<br/>
+        as their sponsorship status. If you are currently looking to adopt,
+        or are just wanting to browse some<br/> of the cutest pets
+        around click on one of the photos below to start your search.</h4>
+        <h2>And please enjoy!</h2>
         </div>
         <Grid>
           <Row>
