@@ -9,12 +9,15 @@ class PetCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lgShow: false
+      lgShow: false,
+      amountSponsored: 0,
+      amountInDb: this.props.pet.amountSponsored
     };
     this.getCookie = this.getCookie.bind(this);
     this.heartPet = this.heartPet.bind(this);
     this.isFavorite = this.isFavorite.bind(this);
     this.cardProgressPercentage = this.cardProgressPercentage.bind(this);
+    this.updateSponsorshipState = this.updateSponsorshipState.bind(this);
   }
 
   isFavorite() {
@@ -49,6 +52,11 @@ class PetCard extends React.Component {
     return (num/500) * 100;
   }
 
+  updateSponsorshipState(val) {
+    console.log(val);
+    this.setState({amountSponsored: val});
+  }
+
   render() {
     let lgClose = () => this.setState({ lgShow: false });
     let heartButtonClass = this.isFavorite() ? "heart-button" : "";
@@ -57,8 +65,9 @@ class PetCard extends React.Component {
       <div className="pet-div" key={this.props.pet.name} id={this.props.pet.animalId}>
         <Thumbnail className="pet-card" src={this.props.pet.mainPhoto} alt="Image">
           <div className={fullySponsored}>
-            <ProgressBar now={this.cardProgressPercentage(this.props.pet.amountSponsored)}
-                         label={`$${this.props.pet.amountSponsored}`} />
+            <ProgressBar now={this.cardProgressPercentage(parseInt(this.state.amountSponsored)
+              + parseInt(this.state.amountInDb))} label={`$${parseInt(this.state.amountSponsored)
+              + parseInt(this.state.amountInDb)}`} />
           </div>
           <h2>{this.props.pet.name}</h2>
           <h4>Sponsor Me!</h4>
@@ -74,7 +83,7 @@ class PetCard extends React.Component {
                   <Glyphicon className={heartButtonClass} glyph="heart" />
                 </Button> : ''
             }
-            <PopUpPet pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
+            <PopUpPet updateSponsorshipState={this.updateSponsorshipState} pet={this.props.pet} show={this.state.lgShow} onHide={lgClose} />
           </ButtonToolbar>
         </Thumbnail>
       </div>

@@ -26,6 +26,7 @@ class Sponsorship extends React.Component {
     e.preventDefault();
     this.sponsorPet(this.state.amountSponsored, this.props.pet.animalId);
     this.setState({moneySent: true});
+    this.props.updateSponsorshipState(this.state.amountSponsored);
   }
 
   sponsorPet(amountSponsored, animalId) {
@@ -79,7 +80,8 @@ class Sponsorship extends React.Component {
 
 Sponsorship.propTypes = {
   pet: React.PropTypes.object,
-  userStore: React.PropTypes.object
+  userStore: React.PropTypes.object,
+  updateSponsorshipState: React.PropTypes.func
 };
 
 export default inject("userStore")(observer(Sponsorship));
