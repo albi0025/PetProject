@@ -25,7 +25,7 @@ class Sponsorship extends React.Component {
   submitHandler(e){
     e.preventDefault();
     this.sponsorPet(this.state.amountSponsored, this.props.pet.animalId);
-    this.setState({moneySent: true})
+    this.setState({moneySent: true});
   }
 
   sponsorPet(amountSponsored, animalId) {
