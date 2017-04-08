@@ -15,8 +15,10 @@ sync.syncPets = function(scrapedPets) {
     // scrapedPets are all animals from the scrape
     // scrapedPets - docs are NEW pets, not yet in the database
     // listDiff(scrapedPets, docs) === scrapedPets - docs
+
     let newPets = this.listDiff(scrapedPets, docs);
     this.saveNewPets(newPets);
+    this.updatePets(scrapedPets);
     this.emailRecipients(newPets);
   }.bind(this));
 
@@ -39,6 +41,13 @@ sync.listDiff = function(a1, a2) {
     }
     return true;
   });
+};
+
+sync.updatePets = function (scrapedPets) {
+  for(let i = 0; i < scrapedPets.length; i ++) {
+    Pet.update({animalId: scrapedPets[i].animalId}, { $set: { mainPhoto: scrapedPets[i].mainPhoto }}, function(err) {
+    });
+  }
 };
 
 sync.emailRecipients = function(newPets) {
