@@ -13,6 +13,7 @@ export default class UserStore {
     this.getCookie = this.getCookie.bind(this);
     this.checkCookie = this.checkCookie.bind(this);
     this.logout = this.logout.bind(this);
+    this.unheartPet = this.unheartPet.bind(this);
   }
 
   getUserFromDb() {
@@ -41,6 +42,18 @@ export default class UserStore {
       })
     });
     this.pets.push(pet);
+  }
+
+  unheartPet(pet) {
+    fetch('user/pets/' + pet._id, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.getCookie('token')
+      }
+    });
+    this.pets.splice(this.pets.indexOf(pet._id), 1);
   }
 
   getCookie(cname) {
