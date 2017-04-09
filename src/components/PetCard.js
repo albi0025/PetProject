@@ -68,7 +68,10 @@ class PetCard extends React.Component {
                         label={`$${this.state.amountSponsored}`} />
           </div>
           <h2>{this.props.pet.name}</h2>
-          <h4>Sponsor Me!</h4>
+          {
+            this.props.pet.adopted ?
+            <h2><Glyphicon className={heartButtonClass} glyph="home" /> ADOPTED! </h2> : <h4>Sponsor Me!</h4>
+          }
           <ButtonToolbar>
             <Button key={this.props.pet.animalId} bsStyle="primary" onClick={()=>{
               this.setState({ lgShow: true });

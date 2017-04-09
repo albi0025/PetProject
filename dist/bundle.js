@@ -87662,7 +87662,12 @@ var PetCard = function (_React$Component) {
             null,
             this.props.pet.name
           ),
-          _react2.default.createElement(
+          this.props.pet.adopted ? _react2.default.createElement(
+            'h2',
+            null,
+            _react2.default.createElement(_reactBootstrap.Glyphicon, { className: heartButtonClass, glyph: 'home' }),
+            ' ADOPTED! '
+          ) : _react2.default.createElement(
             'h4',
             null,
             'Sponsor Me!'
