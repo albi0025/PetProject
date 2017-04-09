@@ -45,7 +45,7 @@ sync.listDiff = function(a1, a2) {
 
 sync.updatePets = function (scrapedPets) {
   for(let i = 0; i < scrapedPets.length; i ++) {
-    Pet.update({animalId: scrapedPets[i].animalId}, { $set: { mainPhoto: scrapedPets[i].mainPhoto }}, function(err) {
+    Pet.update({animalId: scrapedPets[i].animalId}, { $set: { mainPhoto: scrapedPets[i].mainPhoto, description: scrapedPets[i].description }}, function(err) {
     });
   }
 };
