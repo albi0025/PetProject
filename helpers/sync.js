@@ -72,7 +72,4 @@ sync.adoptedTrue = function(pet) {
   });
 };
 
-
-
-
 export default sync;
