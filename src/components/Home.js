@@ -51,7 +51,7 @@ export default class Home extends React.Component {
                 <Glyphicon glyph="usd" className="aboutGlyphicon" />
                 <h2 className="aboutHeader">Sponsor</h2>
                 <p>
-                  Most shelters require at least $500 per animal they house.
+                  Most shelters spend an average of $500 per animal they house.
                   Help fund your favorite animals by directly contributing to their stay.
                 </p>
               </Col>
