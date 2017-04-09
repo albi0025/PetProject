@@ -53,7 +53,11 @@ export default class UserStore {
         'Authorization': 'Bearer ' + this.getCookie('token')
       }
     });
-    this.pets.splice(this.pets.indexOf(pet._id), 1);
+    let favoritePets = this.pets || [];
+    let animalIds = favoritePets.map(function(pet) {
+      return pet.animalId;
+    });
+    this.pets.splice(animalIds.indexOf(pet.animalId), 1);
   }
 
   getCookie(cname) {
