@@ -43642,9 +43642,8 @@ var Home = function (_React$Component) {
                   _react2.default.createElement('br', null),
                   'and Bozeman Pet Project allows you to stay involved.',
                   _react2.default.createElement('br', null),
-                  ' Search for pets by species, contribute to their stay, and save to your favorites',
-                  _react2.default.createElement('br', null),
-                  'library.'
+                  ' Search for pets by species, contribute to their stay, and save to your favorites.',
+                  _react2.default.createElement('br', null)
                 ),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement('hr', null)
