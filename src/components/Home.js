@@ -21,8 +21,7 @@ export default class Home extends React.Component {
                   Engage with your local shelter!
                   Pets in your community need help, <br/>and Bozeman Pet Project
                   allows you to stay involved.<br/> Search for pets by species,
-                  contribute to their stay, and save to your favorites<br/>
-                  library.
+                  contribute to their stay, and save to your favorites.<br/>
                 </p>
                 <br />
                 <hr />
