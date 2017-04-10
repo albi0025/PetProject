@@ -12,6 +12,9 @@ A node/mongo/react web application that populates itself with data from any shel
 - Donate money (sponsor) specific pets.
 - Mobile friendly, responsive interface
 
+## Srape N' Sync
+![scrape n sync 1](https://cloud.githubusercontent.com/assets/15158614/24844650/90a61e0e-1d69-11e7-85a5-75ccb981c164.png)
+
 ## Local Setup
 
 ### Install node
@@ -49,6 +52,6 @@ $ npm test
 ~~~
 
 ## Contributors
-Jennifer Phelps
-Adam Hoberecht
+Jennifer Phelps,
+Adam Hoberecht,
 Tim Walsh
