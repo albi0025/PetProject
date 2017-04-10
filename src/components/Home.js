@@ -21,8 +21,8 @@ export default class Home extends React.Component {
                   Engage with your local shelter!
                   Pets in your community need help, <br/>and Bozeman Pet Project
                   allows you to stay involved.<br/> Search for pets by species,
-                  contribute to their stay, and add your favorites<br/> to a personal
-                  library to keep up with their progress.
+                  contribute to their stay, and save to your favorites<br/>
+                  library.
                 </p>
                 <br />
                 <hr />
@@ -60,6 +60,9 @@ export default class Home extends React.Component {
           </Row>
           <Row bsClass="browsePetsRow row">
             <div>
+              <div className="text-center browse-header">
+                <h1>Browse Adoptable Pets</h1>
+              </div>
               <Col xs={12} md={6} lg={6}>
                 <Link to={{pathname: '/DogDisplay'}}>
                   <Thumbnail className="homediv1" src="../images/mainpuppy.jpg" alt="242x200"/>
@@ -75,9 +78,6 @@ export default class Home extends React.Component {
           <Row>
             <div className="aboutDiv">
               <Col xs={12} md={8} lg={8} lgOffset={2} mdOffset={2}>
-                <br />
-                <br />
-                <br />
                 <h2 className="aboutHeader">&copy;&nbsp;BPP</h2>
               </Col>
             </div>
