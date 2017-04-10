@@ -56,7 +56,6 @@ class PetCard extends React.Component {
   }
 
   updateSponsorshipState(val) {
-    console.log(val);
     this.setState({amountSponsored: val + this.state.amountSponsored});
   }
 
