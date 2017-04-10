@@ -53,5 +53,5 @@ $ npm test
 
 ## Contributors
 Jennifer Phelps,
-Adam Hoberecht
+Adam Hoberecht,
 Tim Walsh
